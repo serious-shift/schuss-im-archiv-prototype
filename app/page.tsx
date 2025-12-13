@@ -1,23 +1,24 @@
-import SceneSection from "@/src/components/SceneSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="bg-neutral-950">
-      <SceneSection
-        id="intro"
-        title="Der Fall beginnt"
-        text="Du wirst zu einem Hinterhof gerufen. Ein Zeuge hat etwas Verdächtiges gesehen und Lolo stinkt."
-      />
-      <SceneSection
-        id="scene-1"
-        title="Erste Spur"
-        text="Eine Notiz, halb durchnässt vom Regen. Nur ein Name ist lesbar und außerdem stinkt Simon."
-      />
-      <SceneSection
-        id="scene-2"
-        title="Wer lügt?"
-        text="Du musst entscheiden, wen du zuerst befragst. Das beeinflusst den Verlauf, aber Lotta stinkt auch."
-      />
+    <main 
+    className="flex min-h-screen flex-col items-center justify-center bg-cover bg-center text-white"
+    style={{ backgroundImage: "url('/images/Szene-0_polizeistation-akte-heller.png')" }}
+    >
+      <div className="text-center bg-black p-10 rounded-xl shadow-lg">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            Schuss im Archiv
+        </h1>
+        <p className="text-lg md:text-xl text-gray-300 mb-8">
+          Ein interaktiver Kriminalfall
+        </p>
+        <Link href="/chapter/1"
+            className="inline-block bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105"
+>
+          Fall beginnen
+        </Link>
+      </div>
     </main>
   );
 }

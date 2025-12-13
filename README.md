@@ -34,3 +34,44 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+Structure
+
+/
+├── app/                                # Routing-Verzeichnis
+│   ├── layout.tsx                      # Haupt-Layout der gesamten App
+│   ├── globals.css                     # Globale Styles
+│   ├── page.tsx                        # Startseite / Landing Page (z.B. mit Spielstart-Button)
+│   │
+│   └── chapter/                        # Ordner für alles, was mit Kapiteln zu tun hat
+│       └── [chapterId]/                # Dynamische Route für jedes Kapitel (z.B. /chapter/1)
+│           ├── page.tsx                # Die Hauptseite, die ein Kapitel rendert
+│           └── layout.tsx              # (Optional) Ein spezielles Layout nur für die Kapitelansicht
+│
+├── public/                             # Statische Dateien (Bilder, Videos, Sounds)
+│   ├── images/
+│   └── audio/
+│
+├── src/                                # Dein Anwendungs-Code
+│   ├── components/                     # Wiederverwendbare React-Komponenten
+│   │   ├── ui/                         # Kleine, allgemeine UI-Elemente (Button, Card, etc.)
+│   │   ├── game/                       # Spiel-spezifische Komponenten (Scene, Choice, DialogueBox)
+│   │   └── layout/                     # Layout-Komponenten (Navbar, ChapterWrapper)
+│   │
+│   ├── content/                        # Der gesamte Spielinhalt (getrennt vom Code)
+│   │   ├── chapters.ts                 # Definiert die Struktur aller Kapitel und Szenen
+│   │   └── characters.ts               # Informationen zu den Charakteren
+│   │
+│   ├── lib/                            # Hilfsfunktionen und Utilities
+│   │   ├── utils.ts                    # Allgemeine Helfer
+│   │   └── useIsomorphicLayoutEffect.ts # Dein existierender Hook
+│   │
+│   ├── hooks/                          # Benutzerdefinierte React Hooks
+│   │   └── useGameState.ts             # (Optional) Hook zur Verwaltung des Spielzustands
+│   │
+│   └── types/                          # TypeScript-Typdefinitionen
+│       └── index.ts                    # z.B. type Chapter, type Scene, type Choice
+│
+├── package.json
+└── tsconfig.json
