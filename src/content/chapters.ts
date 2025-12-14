@@ -21,6 +21,21 @@ export const chapters: Chapter[] = [
                     {
                         type: 'narrative',
                         text: "Die E-Mail ist kurz und prägnant: Zitat: „Dr. Martin Heller, 58, leitender Archivar im Staatsarchiv für Zeitgeschichte, wurde gestern Abend tot aufgefunden. Ermittlungen eingeleitet. Ihre Anwesenheit wird im Archiv erwartet. Keine sichtbaren Einbruchsspuren. Wir warten auf Sie."
+                    },
+                    {
+                        type: 'navigation',
+                        buttonText: "Weiter",
+                        targetSceneId: "scene-0-1"
+                    }
+                ]
+            },
+            {
+                id: "scene-0-1",
+                title: "Fahrt zum Tatort",
+                video: "/videos/scene-0-1-police_car_pov-clean.mp4",
+                content: [
+                    {
+                        type: 'nullBlock'
                     }
                 ]
             }

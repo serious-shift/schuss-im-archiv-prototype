@@ -18,7 +18,10 @@ export default function SceneSection({ title, content, id, video }: SceneSection
     useIsomorphicLayoutEffect(() => {
         const videoEl = videoRef.current;
         const sectionEl = sectionRef.current;
-        if (!videoEl || !sectionEl) return; 
+
+        const scroller = document.querySelector("#smooth-wrapper");
+
+        if (!videoEl || !sectionEl || !scroller) return; 
 
         let ctx: gsap.Context | undefined;
 
@@ -33,6 +36,7 @@ export default function SceneSection({ title, content, id, video }: SceneSection
                     gsap.from(elementsToAnimate, {
                         opacity: 0, y: 30, stagger: 0.2,
                         scrollTrigger: {
+                            scroller: scroller,
                             trigger: sectionEl,
                             start: "top 60%",
                             toggleActions: "play none none none",
@@ -40,9 +44,10 @@ export default function SceneSection({ title, content, id, video }: SceneSection
                     });
                     
                     gsap.to(videoEl, {
-                        currentTime: videoEl.duration,
+                        currentTime: videoEl.duration || 0,
                         ease: "none",
                         scrollTrigger: {
+                            scroller: scroller,
                             trigger: sectionEl,
                             start: "top top",
                             end: "bottom bottom",
@@ -57,6 +62,27 @@ export default function SceneSection({ title, content, id, video }: SceneSection
             ctx?.revert();
         };
     }, [video])
+
+    //! fix navigation handler
+    const handleNavigation = (targetSceneId: string) => {
+        const scroller = document.querySelector("#smooth-wrapper");
+        if (!scroller) return;
+
+        (async () => {
+            const { default: gsap } = await import("gsap");
+            const { ScrollToPlugin } = await import("gsap/ScrollToPlugin");
+            gsap.registerPlugin(ScrollToPlugin);
+
+            gsap.to(scroller, {
+                duration: 1.5,
+                scrollTo: {
+                    y: `#${targetSceneId}`,
+                    offsetY: 100,
+                },
+                ease: "power2.inOut",
+            })
+        })
+    };
 
     return (
         <section
@@ -99,6 +125,21 @@ export default function SceneSection({ title, content, id, video }: SceneSection
                                     ))}
                                 </div>
                             );
+                        }
+                        if (block.type === 'navigation') {
+                            return (
+                                <div key={index} className="anim-child text-center pt-8">
+                                    <button
+                                        onClick={() => handleNavigation(block.targetSceneId)}
+                                        className="bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105"
+                                    >
+                                        {block.buttonText}
+                                    </button>
+                                </div>
+                            )
+                        }
+                        if (block.type === 'nullBlock') {
+                            return null;
                         }
                         return null;
                     })}

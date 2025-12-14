@@ -12,7 +12,17 @@ export type Chapter = {
     scenes: Scene[];
 }
 
-export type SceneContent = NarrativeBlock | DialogueBlock;
+export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock;
+
+export type NavigationBlock = {
+    type : 'navigation';
+    buttonText: string;
+    targetSceneId: string;
+}
+
+export type nullBlock = {
+    type: "nullBlock";
+}
 
 export type NarrativeBlock = {
     type: "narrative";
