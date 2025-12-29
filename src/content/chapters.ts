@@ -59,7 +59,7 @@ export const chapters: Chapter[] = [
                                 id: 'hint-2',
                                 title: 'Zeitstempel',
                                 description: 'Hellers Armbanduhr liegt mit gesprungenem Glas am Boden. Sie ist stehen geblieben.',
-                                image: '/images/Pistole_Prop.png',
+                                image: '/images/watch-prop.png',
                                 required: false,
                                 position: { x: 70, y: 40 }
                             },
@@ -75,7 +75,7 @@ export const chapters: Chapter[] = [
                                 id: 'hint-4',
                                 title: 'Papier Spur',
                                 description: ' Hellers Schreibtisch ist aufgeräumt. Nur eine Spendenliste sticht heraus - neben ihr ein zerknüllter Zettel. Er trägt die klare Handschrift einer anderen Person.',
-                                image: '/images/Pistole_Prop.png',  
+                                image: '/images/Spendenblatt.png',  
                                 required: true,
                                 position: { x: 85, y: 25 }
                             },
@@ -90,7 +90,68 @@ export const chapters: Chapter[] = [
                         ]
                     }
                 ]
-            }
+            },
+            {
+                id: "scene-1-decision",
+                title: "Erste Entscheidung",
+                content: [
+                    {
+                        type: 'narrative',
+                        text: "Die Spurensicherung hat die Funde aus Büro 3.17 verarbeitet. Die Ergebnisse führen zu drei Personen:"
+                    },
+                    {
+                        type: 'decision',
+                        question: "Sie müssen entscheiden, welche der drei Hauptspuren Sie zuerst in der Konfrontation vertiefen.",
+                        choices: [
+                            {
+                                text: "Dr. Petra Haas (DNA des Haars am Ärmel)",
+                                targetSceneId: "scene-2-path-a"
+                            },
+                            {
+                                text: "Lena Bergmann (Schriftuntersuchung des Zettels auf Schreibtisch)",
+                                targetSceneId: "scene-2-path-b"
+                            },
+                            {
+                                text: "Ralf König (Audiospur auf Hellers Handy)",
+                                targetSceneId: "scene-2-path-c"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "scene-2-path-a",
+                title: "Verhör: Dr. Petra Haas (Kollegin)",
+                content: [
+                    {
+                        type: 'narrative',
+                        text: "Coming soon..."
+                    }
+                ]
+            },
+            {id: "scene-2-path-b",
+                title: "Verhör: Lena Bergmann (Praktikantin)",
+                content: [
+                    {
+                        type: 'narrative',
+                        text: "Coming soon..."
+                    }
+                ]},
+            {
+                id: "scene-2-path-c",
+                title: "Verhör: Ralf König (Freund & Journalist)",
+                content: [
+                    {
+                        type: 'dialogue',
+                        lines: [
+                            {
+                                character: "Ermittler:in",
+                                text: "Coming soon...",
+                            }
+                        ]
+                    }
+                ]
+            },
         ],
     }
 ]

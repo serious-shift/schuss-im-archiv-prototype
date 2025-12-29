@@ -4,6 +4,10 @@ import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "@/src/lib/useIsomorphicLayoutEffect";
 import { SceneContent } from "@/src/types";
 import InvestigationView from "./game/InvestigationView";
+import NarrativeBlockView from "./game/NarrativeBlockView";
+import DialogueBlockView from "./game/DialogueBlockView";
+import NavigationBlockView from "./game/NavigationBlockView";
+import DecisionBlockView from "./game/DecisionBlockView";
 
 type SceneSectionProps = {
     title: string;
@@ -107,7 +111,10 @@ export default function SceneSection({ title, content, id, video }: SceneSection
                     </video>
                 )}
                 {investigationBlock && investigationBlock.type === 'investigation' && (
-                    <InvestigationView block={investigationBlock} />
+                    <InvestigationView 
+                        block={investigationBlock}
+                        onComplete={() => handleNavigation('scene-1')} 
+                    />
                 )}
             </div>
             
@@ -115,40 +122,20 @@ export default function SceneSection({ title, content, id, video }: SceneSection
                 <div className="max-w-2xl text-left space-y-6 text-white pointer-events-auto">
                     <h2 className="anim-child text-3xl md:text-5xl font-semibold text-center">{title}</h2>
                     {otherContent.map((block, index) => {
-                        if (block.type === 'narrative') {
-                            return (
-                                <p key={index} className="anim-child text-lg md:text-xl text-gray-300 italic">
-                                    {block.text}
-                                </p>
-                            );
+                        switch (block.type) {
+                            case 'narrative': 
+                                return <NarrativeBlockView key={index} block={block}/>;
+                            case 'dialogue':
+                                return <DialogueBlockView key={index} block={block}/>;
+                            case 'navigation':
+                                return <NavigationBlockView key={index} block={block} onNavigate={handleNavigation}/>;
+                            case 'nullBlock':
+                                return null;
+                            case 'decision':
+                                return <DecisionBlockView key={index} block={block} onNavigate={handleNavigation}/>;
+                            default:
+                                return null;
                         }
-                        if (block.type === 'dialogue') {
-                            return (
-                                <div key={index} className="anim-child space-y-2 p-4 border border-gray-700 rounded-lg">
-                                    {block.lines.map((line, lineIndex) => (
-                                        <p key={lineIndex} className="text-lg">
-                                            <span className="font-bold text-red-500">{line.character}:</span> {line.text}
-                                        </p>
-                                    ))}
-                                </div>
-                            );
-                        }
-                        if (block.type === 'navigation') {
-                            return (
-                                <div key={index} className="anim-child text-center pt-8">
-                                    <button
-                                        onClick={() => handleNavigation(block.targetSceneId)}
-                                        className="bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105"
-                                    >
-                                        {block.buttonText}
-                                    </button>
-                                </div>
-                            )
-                        }
-                        if (block.type === 'nullBlock') {
-                            return null;
-                        }
-                        return null;
                     })}
                 </div>
             </div>

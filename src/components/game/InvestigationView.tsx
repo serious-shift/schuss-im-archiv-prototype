@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 type InvestigationViewProps = {
     block: InvestigationBlock;
-    onComplete?: () => void;
+    onComplete: () => void;
 }
 
 export default function InvestigationView({ block, onComplete }: InvestigationViewProps) {
@@ -70,6 +70,7 @@ export default function InvestigationView({ block, onComplete }: InvestigationVi
             {isCompleted && (
                 <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
                     <button
+                        onClick={onComplete}
                         className="bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105"
                     >
                         Ermittlung abschließen

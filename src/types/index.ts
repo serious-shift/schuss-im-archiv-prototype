@@ -12,7 +12,7 @@ export type Chapter = {
     scenes: Scene[];
 }
 
-export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock | InvestigationBlock;
+export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock | InvestigationBlock | DecisionBlock;
 
 export type InvestigationBlock = {
     type: 'investigation';
@@ -55,4 +55,15 @@ export type DialogueBlock = {
 export type DialogueLine = {
     character: string;
     text: string;
+}
+
+export type Choice = {
+    text: string;
+    targetSceneId: string;
+};
+
+export type DecisionBlock = {
+    type: "decision";
+    question: string;
+    choices: Choice[];
 }
