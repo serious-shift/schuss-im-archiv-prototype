@@ -37,6 +37,8 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
         const sectionEl = sectionRef.current;
         if (!sectionEl) return;
 
+        let animationTimeout: NodeJS.Timeout;
+
         const ctx = gsap.context(() => {
 
             const createAnimations = () => {
@@ -104,6 +106,28 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                         });
                     }
                 }
+
+                // animation for buttons
+                if (interactiveBlocks.length > 0) {
+                    const elementsToAnimate = gsap.utils.toArray(sectionEl.querySelectorAll('.anim-interactive'));
+                    if (elementsToAnimate.length > 0) {
+                        gsap.set(elementsToAnimate, { opacity: 0, y: 20 });
+
+                        ScrollTrigger.create({
+                            scroller: scroller,
+                            trigger: sectionEl,
+                            start: "top -180%",
+                            onEnter: () => gsap.to(elementsToAnimate, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.5,
+                                stagger: 0.1,
+                                ease: "power2.out",
+                            }),
+                            once: true,
+                        })
+                    }
+                }
             };
 
             const videoEl = videoRef.current;
@@ -114,16 +138,28 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                     videoEl.addEventListener('loadedmetadata', createAnimations, { once: true });
                 }
             } else {
-                createAnimations();
+                animationTimeout = setTimeout(createAnimations, 0);
             }
         }, sectionEl);
 
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            clearTimeout(animationTimeout);
+        };
         
     }, [video, isInteractive, onSceneComplete, id]);
 
+    // separate content blocks
     const investigationBlock = content.find(block => block.type === 'investigation');
     const otherContent = content.filter(block => block.type !== 'investigation');
+
+    const textBlocks = otherContent.filter(
+        block => block?.type === 'narrative' || block?.type === 'dialogue'
+    );
+
+    const interactiveBlocks = otherContent.filter(
+        block => block?.type === 'decision' || block?.type === 'navigation'
+    )
 
     return (
         <section
@@ -131,10 +167,9 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
             id={id}
             className="relative h-[300vh]"
         >
-            {/* --- EIN EINZIGER STICKY CONTAINER FÜR ALLES --- */}
             <div className="sticky top-0 h-screen w-full overflow-hidden">
                 
-                {/* Hintergrund-Ebene (Video oder Ermittlung) */}
+                {/* background-layer */}
                 {video && (
                     <video
                         ref={videoRef}
@@ -152,7 +187,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                     />
                 )}
 
-                {/* Text-Ebene (zentrierter Inhalt) */}
+                {/* text layer */}
                 <div className="absolute top-30 left-0 right-0 p-8 md:p-12 pointer-events-none">
                     <div className="max-w-prose">
                         <div className="anim-container w-full space-y-4 text-white pointer-events-auto">
@@ -163,6 +198,21 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                         return <NarrativeBlockView key={index} block={block} />;
                                     case 'dialogue':
                                         return <DialogueBlockView key={index} block={block} />;
+                                    default:
+                                        return null;
+                                }
+                            })}
+                        </div>
+                    </div>
+                </div>
+
+                {/* interaction layer */}
+                <div className="interactive-container absolute bottom-10 left-0 right-0 p-8 md:p-12 pointer-events-none">
+                    <div className="max-w-prose mx-auto">
+                        <div className="anim-container w-full space-y-4 text-white pointer-events-auto">
+                            {otherContent.map((block, index) => {
+                                if (!block) return null;
+                                switch (block.type) {
                                     case 'decision':
                                         return <DecisionBlockView key={index} block={block} onNavigate={onNavigate} />;
                                     case 'navigation':
@@ -175,7 +225,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                     </div>
                 </div>
 
-                {/* UI-Ebene (Titel-Banner) */}
+                {/* UI Title Banner */}
                 {showTitleBanner && (
                     <div className="title-banner z-10">
                         <h3>{title}</h3>

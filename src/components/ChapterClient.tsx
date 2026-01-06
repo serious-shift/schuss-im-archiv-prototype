@@ -75,7 +75,6 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
                     duration: 1.5,
                     scrollTo: {
                         y: `#${lastScene.id}`,
-                        offsetY: 100,
                     },
                     ease: "power2.inOut",
                 });
