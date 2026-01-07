@@ -15,11 +15,7 @@ export default function DecisionBlockView({ block, onNavigate }: DecisionBlockVi
         : undefined;
 
     const combinedStyle = {
-        // Setze IMMER eine Hintergrundfarbe. 
-        // RGBA: 0, 0, 0 ist Schwarz. 0.7 ist 70% Deckkraft.
         backgroundColor: 'rgba(0, 0, 0, 0.7)', 
-        borderRadius: '0.5rem', // Entspricht rounded-lg
-        // Füge das Hintergrundbild hinzu, WENN es existiert
         ...(block.backgroundImage && { 
             backgroundImage: `url(${block.backgroundImage})`, 
             backgroundSize: 'cover', 
@@ -29,23 +25,26 @@ export default function DecisionBlockView({ block, onNavigate }: DecisionBlockVi
 
     if (isImageTileStyle) {
         return (
-            <div className="text-center p-4 space-y-8 opacity-100 bg-black" style={combinedStyle}>
-                <p className="text-xl italic text-gray-300">
-                    {block.question}
-                </p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div className="h-full text-center space-y-8 flex flex-col overflow-hidden" style={combinedStyle}>
+                <div className="bg-red-500 w-full flex flex-col p-4 justify-center items-center">
+                    <h3>
+                        {block.question}
+                    </h3>
+                </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-3 h-full flex flex-col">
                     {block.choices.map((choice, index) => (
                         <button
                             key={index}
                             onClick={() => onNavigate(choice.targetSceneId)}
-                            className="relative aspect-square bg-gray-900/50 border-2 border-gray-700 rounded-lg overflow-hidden group transition-all duration-300  hover:border-red-500 hover:scale-105 focus:outline-none focus:border-red-500"
+                            className="h-full relative bg-gray-900/50 border-2 border-gray-700 rounded-lg overflow-hidden group transition-all duration-300  hover:border-red-500 hover:scale-105 hover:z-10 focus:outline-none focus:border-red-500"
                             aria-label={choice.text}
                         >
                             {choice.image && (
                                 <img
                                     src={choice.image}
                                     alt={choice.text}
-                                    className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                                    className="absolute inset-0 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-300 object-cover group-focus:opacity-100"
                                 />
                             )}
                             <div className="absolute inset-0 flex items-center justify-center bg-black/50 group-hover:bg-black/30 transition-colors duration-300">

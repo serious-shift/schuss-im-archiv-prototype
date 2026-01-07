@@ -108,17 +108,17 @@ export const chapters: Chapter[] = [
                             {
                                 text: "Dr. Petra Haas (DNA des Haars am Ärmel)",
                                 targetSceneId: "scene-2-path-a",
-                                image: '/images/pistole.png' 
+                                image: '/images/martin_heller.png' 
                             },
                             {
                                 text: "Lena Bergmann (Schriftuntersuchung des Zettels auf Schreibtisch)",
                                 targetSceneId: "scene-2-path-b",
-                                image: '/images/pistole.png'
+                                image: '/images/martin_heller.png'
                             },
                             {
                                 text: "Ralf König (Audiospur auf Hellers Handy)",
                                 targetSceneId: "scene-2-path-c",
-                                image: '/images/pistole.png',
+                                image: '/images/martin_heller.png',
 
                             }
                         ],

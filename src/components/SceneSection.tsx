@@ -179,7 +179,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
             <div className="h-full w-full flex flex-col bg-black">
                 {/* infoBlock */}
                 {infoBlock && infoBlock.type === 'info' && (
-                    <div className="felx-shrink-0 p-8 md:p-12" style={{ height: '15vh' }}>
+                    <div className="felx-shrink-0" style={{ height: '15vh' }}>
                         <div className="max-w-prose mx-auto h-full flex items-center">
                             <InfoBlockView block={infoBlock} />
                         </div>
@@ -188,7 +188,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
 
                 {/* decision block */}
                 {decisionBlock && decisionBlock.type === 'decision' && (
-                    <div className="flex-grow p-8 md:p-12">
+                    <div className="flex-grow">
                         <DecisionBlockView block={decisionBlock} onNavigate={onNavigate} />
                     </div>
                 )}
