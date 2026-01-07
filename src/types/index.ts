@@ -30,7 +30,14 @@ export type Hotspot = {
     position: {
         x: number;
         y: number;
-    }
+    };
+    rotation?: number;
+    scale?: number;
+    perspective?: number;
+    rotateX?: number;
+    rotateY?: number;
+    skewX?: number;
+    skewY?: number;
 }
 
 export type NavigationBlock = {
@@ -46,6 +53,7 @@ export type nullBlock = {
 export type NarrativeBlock = {
     type: "narrative";
     text: string | string[];
+    displayAs?: 'default' | 'summary';
 }
 
 export type DialogueBlock = {

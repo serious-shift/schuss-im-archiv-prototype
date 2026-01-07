@@ -42,23 +42,26 @@ export const chapters: Chapter[] = [
                 content: [
                     {
                         type: 'investigation',
-                        backgroundImage: '/images/Archiv-mit-spuren.png',
+                        backgroundImage: '/images/investigation_tatort.png',
                         hotspots: [
                             {
                                 id: 'hint-1',
                                 title: 'Schusswaffe und Patrone',
                                 description: 'Ein kalter Boden. Neben Dr. Heller finden Sie nur eine einzelne Patronenhülse – Kaliber 9mm. Die Waffe selbst wurde mitgenommen. Es war ein sauberer Schuss aus nächster Nähe.',
-                                image: '/images/Pistole_Prop.png',
+                                image: '/images/pistole.png',
                                 required: false,
-                                position: { x: 25, y: 60 }
+                                position: { x: 50, y: 90 },
+                                rotation: 135,
+                                skewY: 30,
                             },
                             {
                                 id: 'hint-2',
                                 title: 'Zeitstempel',
                                 description: 'Hellers Armbanduhr liegt mit gesprungenem Glas am Boden. Sie ist stehen geblieben.',
-                                image: '/images/watch-prop.png',
+                                image: '/images/Watch.png',
                                 required: false,
-                                position: { x: 70, y: 40 }
+                                position: { x: 76, y: 84 },
+                                rotation: -105,
                             },
                             {
                                 id: 'hint-3',
