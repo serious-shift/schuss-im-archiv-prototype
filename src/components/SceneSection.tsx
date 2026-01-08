@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "@/src/lib/useIsomorphicLayoutEffect";
-import { SceneContent } from "@/src/types";
+import { SceneContent, DialogueBlock, DecisionBlock, NavigationBlock } from "@/src/types";
 import InvestigationView from "./game/InvestigationView";
 import NarrativeBlockView from "./game/NarrativeBlockView";
 import DialogueBlockView from "./game/DialogueBlockView";
@@ -243,6 +243,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
     if (layout === 'dialogue') {
         const dialogueBlock = content.find(block => block?.type === 'dialogue');
         const decisionBlock = content.find(block => block?.type === 'decision');
+        const navigationBlock = content.find(block => block?.type === 'navigation');
 
         return (
             <section
@@ -277,12 +278,23 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
 
                     {/* decision block layer */}
                     {decisionBlock && decisionBlock.type === 'decision' && (
-                        <div className="absolute inset-0 flex items-center jsuify-center p-8 md:p-12">
+                        <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
                             <div className="decision-block-container opacity-0 w-full max-w-prose pointer-events-auto">
                                 <DecisionBlockView block={decisionBlock} onNavigate={onNavigate} />
                             </div>
                         </div>
                     )}
+
+                    {/* navigation block layer */}
+                    {navigationBlock && (
+                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+                            <NavigationBlockView
+                                block={navigationBlock as NavigationBlock}
+                                onNavigate={onNavigate}
+                            />
+                        </div>
+                    )}
+
                 </div>
 
                 {/* UI Title Banner */}

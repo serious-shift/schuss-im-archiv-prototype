@@ -66,7 +66,7 @@ export default function DecisionBlockView({ block, onNavigate }: DecisionBlockVi
             <p className="text-xl italic text-gray-300">
                 {block.question}
             </p>
-            <div className={isQuestionStyle ? "flex flex-col items-start gap-2" : "flex flex-col md:flex-row justify-center gap-4"}>
+            <div className={isQuestionStyle ? "flex flex-col items-start gap-2" : "flex flex-col justify-center gap-4"}>
                 {block.choices.map((choice, index) => (
                     <button
                         key={index}

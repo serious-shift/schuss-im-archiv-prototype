@@ -217,32 +217,10 @@ export const chapters: Chapter[] = [
                 ]
             },
             {
-                id: "scene-2-path-c-question",
-                title: "Verhör: Ralf König (Freund & Journalist) - Frage",
-                content: [
-                    {
-                        type: 'decision',
-                        question: "Was möchten Sie Ralf König fragen?",
-                        choices: [
-                            {
-                                text: "Würden Sie sich bereit erklären, uns Ihr Handy zu geben? Wir lassen beide Geräte forensisch untersuchen.",
-                                targetSceneId: "scene-2-path-c-q1"
-                            },
-                            {
-                                text: "Herr König, welche Themen decken Sie aktuell in Ihrer journalistischen Arbeit ab?",
-                                targetSceneId: "scene-2-path-c-q2"
-                            },
-                            {
-                                text: "Wissen Sie noch, was genau Sie Heller in Ihrer Sprachnachricht sagen wollten – also im Original?",
-                                targetSceneId: "scene-2-path-c-q3"
-                            },
-                        ]
-                    }
-                ]
-            },
-            {
                 id: "scene-2-path-c-q1",
                 title: "Interaktive Frage 1",
+                image: '/images/Verhoerraum.png',
+                layout: 'dialogue',
                 content: [
                     {
                         type: 'dialogue',
@@ -258,12 +236,19 @@ export const chapters: Chapter[] = [
                                 align: 'right',
                             }
                         ]
+                    },
+                    {
+                        type: 'navigation',
+                        buttonText: "Weiter",
+                        targetSceneId: "scene-2-path-c-decision"
                     }
                 ]
             },
             {
                 id: "scene-2-path-c-q2",
                 title: "Interaktive Frage 2",
+                image: '/images/Verhoerraum.png',
+                layout: 'dialogue',
                 content: [
                     {
                         type: 'dialogue',
@@ -279,12 +264,19 @@ export const chapters: Chapter[] = [
                                 align: 'right',
                             }
                         ]
+                    },
+                    {
+                        type: 'navigation',
+                        buttonText: "Weiter",
+                        targetSceneId: "scene-2-path-c-decision"
                     }
                 ]
             },
             {
                 id: "scene-2-path-c-q3",
                 title: "Interaktive Frage 3",
+                image: '/images/Verhoerraum.png',
+                layout: 'dialogue',
                 content: [
                     {
                         type: 'dialogue',
@@ -300,6 +292,11 @@ export const chapters: Chapter[] = [
                                 align: 'right',
                             }
                         ]
+                    },
+                    {
+                        type: 'navigation',
+                        buttonText: "Weiter",
+                        targetSceneId: "scene-2-path-c-decision"
                     }
                 ]
             },
