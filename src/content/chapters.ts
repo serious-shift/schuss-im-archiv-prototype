@@ -8,6 +8,10 @@ import { veroeffentlichungenDurchleuchtenChapter } from "./veroeffentlichungen-d
 import { tiefereAnalyseVeroeffentlichungenChapter } from "./tiefere-analyse-veroeffentlichungen";
 import { tonspurPruefenChapter } from "./tonspur-pruefen";
 import { tonspurErgebnisseChapter } from "./tonspur-ergebnisse";
+import { befragungLenaBergmannChapter } from "./befragung-lena-bergmann";
+import { usbStickVerlustChapter } from "./usb-stick-verlust";
+import { spurensicherungAdminStationChapter } from "./spurensicherung-admin-station";
+import { befragungPetraHaasChapter } from "./befragung-petra-haas";
 
 export const chapters: Chapter[] = [
   einfuehrungChapter,
@@ -18,5 +22,9 @@ export const chapters: Chapter[] = [
   veroeffentlichungenDurchleuchtenChapter,    
   tiefereAnalyseVeroeffentlichungenChapter,
   tonspurPruefenChapter,
-  tonspurErgebnisseChapter
+  tonspurErgebnisseChapter,
+  befragungLenaBergmannChapter,
+  usbStickVerlustChapter,
+  spurensicherungAdminStationChapter,
+  befragungPetraHaasChapter,
 ];

@@ -32,6 +32,31 @@ export const tonspurErgebnisseChapter: Chapter = {
                     ]
                 }
             ]
+        },
+        {
+            id: "scene-4-c-a-decision",
+            title: "Entscheidung: Nächste Schritte",
+            showTitleBanner: true,
+            content: [
+                {
+                    type: "narrative",
+                    text: "Die Datei wurde über das eingeloggte Nutzerkonto von Martin Heller übertragen. Aber er hat sich doch nicht selber so eine Datei übertragen. Doch vielleicht gibt es noch weitere Hinweise am Rechner – zum Beispiel Fingerabdrücke."
+                },
+                {
+                    type: "decision",
+                    question: "Wie willst du weiter vorgehen?",
+                    choices: [
+                        {
+                            text: "→ Vielleicht hat die Person beim Aufspielen der Deepfake-Datei Spuren hinterlassen.",
+                            targetChapterId: "spurensicherung-admin-station"
+                        },
+                        {
+                            text: "→ Was hat sie an dem Tattag am Admin Rechner gemacht?",
+                            targetChapterId: "befragung-lena-bergmann"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
