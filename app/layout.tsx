@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroller from "@/src/components/layout/SmoothScroller";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,11 +30,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div id="smooth-wrapper" className="fixed top-0 left-0 w-full h-full overflow-auto">
-          <div id="smooth-content">
+        <SmoothScroller />
         {children}
-          </div>
-        </div>
       </body>
     </html>
   );

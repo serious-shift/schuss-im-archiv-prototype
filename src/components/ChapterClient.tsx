@@ -19,7 +19,7 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
     // State for the currently visible scenes
     const [visibleScenes, setVisibleScenes] = useState<Scene[]>([]);
 
-    useIsomorphicLayoutEffect(() => {
+    /*useIsomorphicLayoutEffect(() => {
         const lenis = new Lenis({
             wrapper: document.querySelector("#smooth-wrapper") as HTMLElement,
             content: document.querySelector("#smooth-content") as HTMLElement,
@@ -39,7 +39,7 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
             lenis.destroy();
             gsap.ticker.remove(tickerCallback);
         };
-    }, []);
+    }, []);*/
 
     useEffect(() => {
         if (chapterData && chapterData.scenes.length > 0) {
@@ -87,23 +87,19 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
     // scroll to newly added scene
     useEffect(() => {
         if (visibleScenes.length > 1) {
-            const lastScene = visibleScenes[visibleScenes.length - 1];
-            const scroller = document.querySelector("#smooth-wrapper");
-            if (!scroller) return;
+            const lastSceneId = visibleScenes[visibleScenes.length - 1].id;
+            const targetElement = document.getElementById(lastSceneId);
 
-            (async () => {
-                const { default: gsap } = await import("gsap");
-                const { ScrollToPlugin } = await import("gsap/ScrollToPlugin");
-                gsap.registerPlugin(ScrollToPlugin);
-
-                gsap.to(scroller, {
+            if (targetElement) {
+                gsap.to(window, {
                     duration: 1.5,
                     scrollTo: {
-                        y: `#${lastScene.id}`,
+                        y: targetElement.offsetTop,
+                        autoKill: false,
                     },
                     ease: "power2.inOut",
-                });
-            })();
+                })
+            }
         }
     }, [visibleScenes]);
 

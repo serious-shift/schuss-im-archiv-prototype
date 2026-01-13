@@ -52,7 +52,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                 gsap.from(elementsToAnimate, {
                     opacity: 0, y: 30, stagger: 0.2,
                     scrollTrigger: {
-                        scroller: scroller,
+                        //scroller: scroller,
                         trigger: sectionEl,
                         start: "top 60%",
                         toggleActions: "play none none none",
@@ -64,7 +64,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                 if (videoEl) {
                     videoEl.currentTime = 0;
                     ScrollTrigger.create({
-                        scroller: scroller,
+                        //scroller: scroller,
                         trigger: sectionEl,
                         start: "top top",
                         end: "bottom bottom",
@@ -79,7 +79,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                 // Trigger for scene completion
                 if (!isInteractive) {
                     ScrollTrigger.create({
-                        scroller: scroller,
+                        //scroller: scroller,
                         trigger: sectionEl,
                         start: "top -150%",
                         onEnter: () => onSceneComplete(id),
@@ -100,7 +100,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                             y: -(textHeight - containerHeight),
                             ease: "none",
                             scrollTrigger: {
-                                scroller: scroller,
+                                //scroller: scroller,
                                 trigger: sectionEl,
                                 start: "top top",
                                 end: "bottom bottom",
@@ -121,7 +121,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
 
                         const tl = gsap.timeline({
                             scrollTrigger: {
-                                scroller: scroller,
+                                //scroller: scroller,
                                 trigger: sectionEl,
                                 pin: true,
                                 pinReparent: true,
@@ -157,7 +157,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                         gsap.set(elementsToAnimate, { opacity: 0, y: 20 });
 
                         ScrollTrigger.create({
-                            scroller: scroller,
+                            //scroller: scroller,
                             trigger: sectionEl,
                             start: "top -180%",
                             onEnter: () => gsap.to(elementsToAnimate, {
