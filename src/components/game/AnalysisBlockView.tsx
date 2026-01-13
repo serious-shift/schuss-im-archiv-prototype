@@ -4,13 +4,16 @@ import { useRef } from 'react';
 import { AnalysisBlock } from '@/src/types';
 import { useIsomorphicLayoutEffect } from '@/src/lib/useIsomorphicLayoutEffect';
 import gsap from 'gsap';
+import { time } from 'console';
 
 type AnalysisBlockViewProps = {
     block: AnalysisBlock;
+    progress?: number;
 };
 
-export default function AnalysisBlockView({ block }: AnalysisBlockViewProps) {
+export default function AnalysisBlockView({ block, progress = 0 }: AnalysisBlockViewProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+    const timelineRef = useRef<gsap.core.Timeline | null>(null)
 
     useIsomorphicLayoutEffect(() => {
         const container = containerRef.current;
@@ -19,16 +22,8 @@ export default function AnalysisBlockView({ block }: AnalysisBlockViewProps) {
         const lines = gsap.utils.toArray<HTMLElement>(container.querySelectorAll('.log-line'));
 
         const ctx = gsap.context(() => {
+            const tl = gsap.timeline({ paused: true });
             gsap.set(lines, { autoAlpha: 0 });
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: container,
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: 1,
-                }
-            });
 
             lines.forEach(line => {
                 tl.to(line, {
@@ -36,10 +31,17 @@ export default function AnalysisBlockView({ block }: AnalysisBlockViewProps) {
                     duration: 0.5,
                 }, '+=0.5')
             });
+            timelineRef.current = tl;
         }, container);
 
         return () => ctx.revert();
     }, [block]);
+
+    useIsomorphicLayoutEffect(() => {
+        if (timelineRef.current) {
+            timelineRef.current.progress(progress);
+        }
+    }, [progress]);
 
     return (
         <div ref={containerRef} className="font-mono bg-black/80 border border-cyan-400/30 rounded-lg p-4 md:p-6 shadow-[0_0_15px_rgba(77,208,225,0.2)] backdrop-blur-sm">

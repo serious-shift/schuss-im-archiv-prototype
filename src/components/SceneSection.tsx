@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useIsomorphicLayoutEffect } from "@/src/lib/useIsomorphicLayoutEffect";
 import { SceneContent, DialogueBlock, DecisionBlock, NavigationBlock, InfoBlock, InvestigationBlock, NarrativeBlock, AnalysisBlock } from "@/src/types";
 import InvestigationView from "./game/InvestigationView";
@@ -26,12 +26,14 @@ type SceneSectionProps = {
     onNavigate: (targetSceneId: string) => void;
     onSceneComplete: (sceneId: string) => void;
     onDecision: (sceneId: string, followUpContent: SceneContent[]) => void;
-    layout?: 'default' | 'split-view' | 'dialogue';
+    layout?: 'default' | 'split-view' | 'dialogue' | 'sequential';
 };
 
 export default function SceneSection({ title, content, showTitleBanner, id, video, image, onNavigate, onSceneComplete, onDecision, layout = 'default',  }: SceneSectionProps) {
     const sectionRef = useRef<HTMLElement | null>(null);
     const videoRef = useRef<HTMLVideoElement | null>(null);
+
+    const [analysisProgress, setAnalysisProgress] = useState(0);
 
     {/* Define all content blocks */}
     const infoBlock = content.find(block => block?.type === 'info') as InfoBlock | undefined;
@@ -139,6 +141,62 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                 }
                             }
                         }
+                    }
+                }
+
+                {/* Animation for sequential layout */}
+                if (layout === 'sequential') {
+                    const steps = gsap.utils.toArray<HTMLElement>(sectionEl.querySelectorAll('.dialogue-step'));
+                    if (steps.length > 0) {
+                        gsap.set(steps, { opacity: 0, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' });
+
+                        const masterTl = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: sectionEl,
+                                start: "top top",
+                                end: `bottom bottom`,
+                                scrub: 1,
+                            }
+                        });
+
+                        steps.forEach((step, index) => {
+                            const internalScroller = step.querySelector('.internal-scroll-text');
+                            const analysisBlock = step.querySelector('.analysis-block-wrapper');
+
+                            masterTl.to(step, { opacity: 1, duration: 0.5 }, `step_start_${index}`);
+
+                            if (internalScroller) {
+                                const textHeight = internalScroller.scrollHeight;
+                                const container = internalScroller.parentElement;
+                                const containerHeight = container ? container.clientHeight : 0;
+                                if (textHeight > containerHeight) {
+                                    masterTl.to(internalScroller, {
+                                        y: -(textHeight - containerHeight),
+                                        duration: 2,
+                                        ease: "none",
+                                        end: `bottom bottom`,
+                                    }, `step_start_${index} +=0.5`);
+                                    masterTl.to({}, { duration: 1 }); 
+                                } else {
+                                    masterTl.to({}, {duration: 2});
+                                }
+                            } else if (analysisBlock) {
+                                masterTl.to({}, {
+                                    duration: 2,
+                                    onUpdate: function() {
+                                        setAnalysisProgress(this.progress());
+                                    },
+                                    onComplete: () => setAnalysisProgress(0),
+                                    onReverseComplete: () => setAnalysisProgress(0),
+                                }, `step_start_${index} +=0.5`);
+                            } else {
+                                masterTl.to({}, {duration: 2});
+                            }
+
+                            if (index < steps.length - 1) {
+                                masterTl.to(step, { opacity: 0, duration: 0.5 }, `step_start_${index + 1}`);
+                            }
+                        });
                     }
                 }
 
@@ -262,15 +320,21 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
         );
     }
 
-    {/* dialogue layout */}
-    if (layout === 'dialogue') {
+    {/* sequential/dialogue layout */}
+    if (layout === 'dialogue' || layout === 'sequential') {
         const sequenceContent = content.filter(
-            block => block?.type === 'dialogue' || block?.type === 'decision' || block?.type === 'navigation'
+            block => block?.type === 'dialogue' || block?.type === 'decision' || block?.type === 'navigation' || block?.type === 'narrative' || block?.type === 'analysis'
         );
 
         const totalSteps = sequenceContent.reduce((acc, block) => {
             if (block?.type === 'dialogue') {
                 return acc + block.lines.length;
+            }
+            if (block?.type === 'narrative') {
+                return acc + 2;
+            }
+            if (block?.type === 'analysis') {
+                return acc + 4;
             }
             return acc + 1;
         }, 0);
@@ -307,6 +371,26 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                             </div>
                                         </div>
                                     ));
+
+                                case 'narrative':
+                                    return (
+                                        <div key={blockIndex} className="dialogue-step absolute inset-0 flex items-center justify-center p-8 md:p-12">
+                                            <div className="w-full max-w-prose pointer-events-auto">
+                                                <div className="internal-scroll-text">
+                                                    <NarrativeBlockView block={block} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+
+                                case 'analysis':
+                                    return (
+                                        <div key={blockIndex} className="dialogue-step absolute inset-0 flex items-center justify-center p-8 md:p-12">
+                                            <div className="analysis-block-wrapper w-full max-w-prose pointer-events-auto">
+                                                <AnalysisBlockView block={block} progress={analysisProgress} />
+                                            </div>
+                                        </div>
+                                    );
 
                                 case 'decision':
                                     return (

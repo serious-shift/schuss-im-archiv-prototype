@@ -7,7 +7,7 @@ export const tonspurErgebnisseChapter: Chapter = {
         {
             id: "scene-4-c-a",
             title: "Wie kam die Datei auf das Handy?",
-            layout: "default",
+            layout: "sequential",
             showTitleBanner: true,
             image: '/images/Verhoerraum.png',
             content: [
@@ -28,7 +28,7 @@ export const tonspurErgebnisseChapter: Chapter = {
                         { label: 'Übertragungsweg', value: 'Nearby Share / Bluetooth' },
                         { label: 'Absendergerät', value: 'ADMIN-Station' },
                         { label: 'Gerät ist Teil des', value: 'Archiv-Netzwerks' },
-                        { label: 'Letzte Nutzer:innen', value: '', subItems: ['L. Bergmann (11:00 - 15:00 Uhr)', 'L. Bergmann (11:00 - 15:00 Uhr)'] },
+                        { label: 'Letzte Nutzer:innen', value: '', subItems: ['L. Bergmann (11:00 - 15:00 Uhr)', 'M. Heller (16:39 - 16:45 Uhr)'] },
                     ]
                 }
             ]

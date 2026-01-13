@@ -5,7 +5,7 @@ export type Scene = {
     image?: string;
     video?: string;
     content: SceneContent[];
-    layout?: 'default' | 'split-view' | 'dialogue';
+    layout?: 'default' | 'split-view' | 'dialogue' | 'sequential';
 }
 
 export type Chapter = {
