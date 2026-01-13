@@ -14,7 +14,7 @@ export type Chapter = {
     scenes: Scene[];
 }
 
-export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock | InvestigationBlock | DecisionBlock | InfoBlock;
+export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock | InvestigationBlock | DecisionBlock | InfoBlock | AnalysisBlock;
 
 export type InvestigationBlock = {
     type: 'investigation';
@@ -96,5 +96,5 @@ export type AnalysisBlock = {
         label: string;
         value: string;
         subItems?: string[];
-    }
+    }[];
 }

@@ -2,13 +2,14 @@
 
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "@/src/lib/useIsomorphicLayoutEffect";
-import { SceneContent, DialogueBlock, DecisionBlock, NavigationBlock, InfoBlock, InvestigationBlock, NarrativeBlock } from "@/src/types";
+import { SceneContent, DialogueBlock, DecisionBlock, NavigationBlock, InfoBlock, InvestigationBlock, NarrativeBlock, AnalysisBlock } from "@/src/types";
 import InvestigationView from "./game/InvestigationView";
 import NarrativeBlockView from "./game/NarrativeBlockView";
 import DialogueBlockView from "./game/DialogueBlockView";
 import NavigationBlockView from "./game/NavigationBlockView";
 import DecisionBlockView from "./game/DecisionBlockView";
 import InfoBlockView from "./game/InfoBlockView";
+import AnalysisBlockView from "./game/AnalysisBlockView";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -217,15 +218,17 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
     }, [video, isInteractive, onSceneComplete, id, layout, content]);
 
     {/* Separation of content blocks */}
-    const otherContent = content.filter(block => block.type !== 'investigation' && block.type !== 'info' && block.type !== 'dialogue');
+    //const otherContent = content.filter(block => block.type !== 'investigation' && block.type !== 'info' && block.type !== 'dialogue');
 
-    const textBlocks = otherContent.filter(
-        block => block?.type === 'narrative'
+    const textBlocks = content.filter(
+        (block): block is NarrativeBlock | AnalysisBlock =>
+            block.type === 'narrative' || block.type === 'analysis'
     );
 
-    const interactiveBlocks = otherContent.filter(
-        block => block?.type === 'decision' || block?.type === 'navigation'
-    )
+    const interactiveBlocks = content.filter(
+        (block): block is DecisionBlock | NavigationBlock =>
+            block.type === 'decision' || block.type === 'navigation'
+    );
 
     {/* interaction layer in split view */}
     if (layout === 'split-view') {
@@ -393,6 +396,8 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                     switch (block.type) {
                                         case 'narrative':
                                             return <NarrativeBlockView key={index} block={block} />;
+                                        case 'analysis':
+                                            return <AnalysisBlockView key={index} block={block} />;
                                         default:
                                             return null;
                                     }

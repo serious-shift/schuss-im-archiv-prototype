@@ -1,0 +1,37 @@
+import { Chapter } from "@/src/types";
+
+export const tonspurErgebnisseChapter: Chapter = {
+    id: "tonspur-ergebnisse",
+    title: "Tonspur Ergebnisse",
+    scenes: [
+        {
+            id: "scene-4-c-a",
+            title: "Wie kam die Datei auf das Handy?",
+            layout: "default",
+            showTitleBanner: true,
+            image: '/images/Verhoerraum.png',
+            content: [
+                {
+                    type: "narrative",
+                    text: [
+                        "Die Deepfake-Tonspur wurde nicht aufgenommen, sondern übertragen.",
+                        "Jemand hat sie kurz vor dem Mord auf Hellers Handy geschickt – unter dem Namen „R. König“.",
+                        "Doch wie kam die Datei aufs Gerät? Die Forensik liefert erste Hinweise."
+                    ]
+                },
+                {
+                    type: "analysis",
+                    title: "Geräteanalyse",
+                    items: [
+                        { label: 'Importzeitpunkt', value: '16:41 Uhr' },
+                        { label: 'Dateiname', value: 'msg_koenig_final.wav' },
+                        { label: 'Übertragungsweg', value: 'Nearby Share / Bluetooth' },
+                        { label: 'Absendergerät', value: 'ADMIN-Station' },
+                        { label: 'Gerät ist Teil des', value: 'Archiv-Netzwerks' },
+                        { label: 'Letzte Nutzer:innen', value: '', subItems: ['L. Bergmann (11:00 - 15:00 Uhr)', 'L. Bergmann (11:00 - 15:00 Uhr)'] },
+                    ]
+                }
+            ]
+        }
+    ]
+}
