@@ -123,7 +123,7 @@ export const chapters: Chapter[] = [
                             },
                             {
                                 text: "Ralf König (Audiospur auf Hellers Handy)",
-                                targetSceneId: "scene-2-path-c",
+                                targetChapterId: "2",
                                 image: '/images/martin_heller.png',
 
                             }

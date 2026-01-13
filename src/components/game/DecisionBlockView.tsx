@@ -1,4 +1,5 @@
-import { DecisionBlock } from '@/src/types';
+import { DecisionBlock, Choice } from '@/src/types';
+import { useRouter } from 'next/navigation';
 
 type DecisionBlockViewProps = {
     block: DecisionBlock;
@@ -6,6 +7,19 @@ type DecisionBlockViewProps = {
 };
 
 export default function DecisionBlockView({ block, onNavigate }: DecisionBlockViewProps) {
+    const router = useRouter();
+
+    const handleChoiceClick = (choice: Choice) => {
+        if (choice.targetChapterId) {
+            router.push(`/chapter/${choice.targetChapterId}`);
+        } else if (choice.targetSceneId) {
+            onNavigate(choice.targetSceneId);
+        } else {
+            console.warn('Choice has no targetSceneId or targetChapterId:', choice);
+            return;
+        }
+    }
+
     // determine display style
     const isQuestionStyle = block.displayAs === 'question';
     const isImageTileStyle = block.choices.some(choice => choice.image);
@@ -36,7 +50,7 @@ export default function DecisionBlockView({ block, onNavigate }: DecisionBlockVi
                     {block.choices.map((choice, index) => (
                         <button
                             key={index}
-                            onClick={() => onNavigate(choice.targetSceneId)}
+                            onClick={() => handleChoiceClick(choice)}
                             className="h-full relative bg-gray-900/50 border-2 border-gray-700 rounded-lg overflow-hidden group transition-all duration-300  hover:border-red-500 hover:scale-105 hover:z-10 focus:outline-none focus:border-red-500"
                             aria-label={choice.text}
                         >
@@ -70,7 +84,7 @@ export default function DecisionBlockView({ block, onNavigate }: DecisionBlockVi
                 {block.choices.map((choice, index) => (
                     <button
                         key={index}
-                        onClick={() => onNavigate(choice.targetSceneId)}
+                        onClick={() => handleChoiceClick(choice)}
                         className="bg-gray-800 hover:bg-red-700 border border-gray-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 flex-1 text-left"
                     >
                         {choice.text}

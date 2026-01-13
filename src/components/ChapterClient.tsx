@@ -54,10 +54,10 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
         if (targetScene) {
             // Add the new scene to the visible ones
             setVisibleScenes(prevScenes => {
-                if (prevScenes.find(s => s.id === targetSceneId)) {
+                if (prevScenes.some(s => s.id === targetSceneId)) {
                     (async () => {
-                        const scroller = document.querySelector("#smooth-wrapper");
-                        gsap.to(scroller, {
+                        //const scroller = document.querySelector("#smooth-wrapper");
+                        gsap.to(window, {
                             duration: 1.5,
                             scrollTo: { y: `#${targetSceneId}`, offsetY: 100 },
                             ease: "power2.inOut",
@@ -72,7 +72,7 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
                 return [...prevScenes, targetScene];
             });
         }
-    }, [chapterData.scenes]);
+    }, [chapterData]);
 
     // handle scene completion (for not interactive scenes)
     const handleSceneComplete = useCallback((completedSceneId: string) => {
@@ -82,7 +82,7 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
             const nextScene = chapterData.scenes[completedSceneIndex + 1];
             handleNavigate(nextScene.id);
         }
-    }, [chapterData.scenes, handleNavigate]);
+    }, [chapterData, handleNavigate]);
 
     // scroll to newly added scene
     useEffect(() => {

@@ -111,7 +111,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                 }
 
                 // animation for dialogue texts
-                const dialogueContainer = sectionEl.querySelector('.dialogue-container');
+                /*const dialogueContainer = sectionEl.querySelector('.dialogue-container');
                 if (dialogueContainer) {
                     const lines = gsap.utils.toArray<HTMLElement>(dialogueContainer.querySelectorAll('.dialogue-line'));
                     const decisionContainer = sectionEl.querySelector('.decision-block-container');
@@ -146,6 +146,68 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
 
                             tl.to(lines[lines.length -1], { opacity: 0 }, "+=1")
                             .to(decisionContainer, { autoAlpha: 1 });
+                        }
+                    }
+                }*/
+
+                // new dialogue animation
+                if (layout === 'dialogue') {
+                    const steps = gsap.utils.toArray<HTMLElement>(sectionEl.querySelectorAll('.dialogue-step'))
+
+                    if (steps.length > 0) {
+                        gsap.set(steps, { opacity: 0 });
+
+                        const tl = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: sectionEl,
+                                start: "top top",
+                                end: "bottom bottom",
+                                scrub: 1,
+                            }
+                        });
+
+                        tl.to(steps[0], { opacity: 1 });
+
+                        steps.forEach((step, index) => {
+                            if (index === 0) return;
+
+                            const previousStep = steps[index -1];
+
+                            tl.to(previousStep, { opacity: 0 }, "+=1")
+                                .to(step, { opacity: 1 }, "<")
+                        })
+                    } else {
+                        const dialogueContainer = sectionEl.querySelector('.dialogue-container');
+                        if (dialogueContainer) {
+                            const lines = gsap.utils.toArray<HTMLElement>(dialogueContainer.querySelectorAll('.dialogue-line'));
+                            const decisionContainer = sectionEl.querySelector('.decision-block-container');
+
+                            if (lines.length > 0) {
+                                gsap.set(lines[0], { opacity: 1 });
+
+                                const tl = gsap.timeline({
+                                    scrollTrigger: {
+                                        trigger: sectionEl,
+                                        pin: true,
+                                        pinReparent: true,
+                                        anticipatePin: 1,
+                                        scrub: 1,
+                                        start: "top top",
+                                        end: `+=${lines.length * 150}%`,
+                                    }
+                                });
+
+                                lines.forEach((line, index) => {
+                                    if (index === 0) return;
+                                    const prevLine = lines[index - 1];
+                                    tl.to(prevLine, { opacity: 0 }, `+=${index * 0.1}`).to(line, { opacity: 1 });
+                                });
+
+                                if (decisionContainer) {
+                                    gsap.set(decisionContainer, { autoAlpha: 0 });
+                                    tl.to(lines[lines.length - 1], { opacity: 0 }, "+=1").to(decisionContainer, { autoAlpha: 1 });
+                                }
+                            }
                         }
                     }
                 }
@@ -241,17 +303,25 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
 
     {/* dialogue layout */}
     if (layout === 'dialogue') {
-        const dialogueBlock = content.find(block => block?.type === 'dialogue');
-        const decisionBlock = content.find(block => block?.type === 'decision');
-        const navigationBlock = content.find(block => block?.type === 'navigation');
+        const dialogueBlock = content.find(block => block?.type === 'dialogue') as DialogueBlock | undefined;
+        const decisionBlock = content.find(block => block?.type === 'decision') as DecisionBlock | undefined;
+        const navigationBlock = content.find(block => block?.type === 'navigation') as NavigationBlock | undefined;
+
+        const dialogueSteps = dialogueBlock ? dialogueBlock.lines.length : 0;
+        const decisionSteps = decisionBlock ? 1 : 0;
+        const navigationSteps = navigationBlock ? 1 : 0;
+        const totalSteps = dialogueSteps + decisionSteps + navigationSteps;
+
+        const sectionHeight = 100 + (totalSteps > 1 ? (totalSteps -1) * 100 : 0);
 
         return (
             <section
             ref={sectionRef}
             id={id}
-            className="relative h-screen"
+            className="relative"
+            style={{ height: `${sectionHeight}vh` }}
             >
-                <div className="h-screen w-full overflow-hidden bg-black">
+                <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
                     {/* background-layer */}
                     {image && (
                         <div
@@ -260,7 +330,40 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                         />
                     )}
 
-                    {/* dialogue text layer */}
+                    <div className="dialogue-container absolute inset-0">
+                        {/* dialogue text layer */}     
+                        {dialogueBlock && dialogueBlock.lines.map((line, index) => (
+                            <div
+                                key={index}
+                                className={`dialogue-step absolute bottom-8 md:bottom-12 left-8 right-8 md:left-12 md:right-12 flex opacity-0 pointer-events-auto ${line.align === 'left' ? 'justify-start' : 'justify-end'}`}
+                            >
+                                <div className="max-w-prose w-full">
+                                    <DialogueBlockView line={line} />
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* decision block layer */}
+                        {decisionBlock && decisionBlock.type === 'decision' && (
+                            <div className="dialogue-step absolute inset-0 flex items-center justify-center p-8 md:p-12">
+                                <div className="decision-block-container opacity-0 w-full max-w-prose pointer-events-auto">
+                                    <DecisionBlockView block={decisionBlock} onNavigate={onNavigate} />
+                                </div>
+                            </div>
+                        )}
+
+                        {/* navigation block layer */}
+                        {navigationBlock && (
+                            <div className="dialogue-step absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+                                <NavigationBlockView
+                                    block={navigationBlock as NavigationBlock}
+                                    onNavigate={onNavigate}
+                                />
+                            </div>
+                        )}
+                    </div>
+
+                    {/*{/* dialogue text layer 
                     {dialogueBlock && dialogueBlock.type === 'dialogue' && (
                         <div className="dialogue-container absolute bottom-0 left-0 right-0 p-8 md:p-12 pointer-events-none">
                             {dialogueBlock.lines.map((line, index) => (
@@ -274,26 +377,9 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                 </div>
                             ))}
                         </div>
-                    )}
+                    )}*/}
 
-                    {/* decision block layer */}
-                    {decisionBlock && decisionBlock.type === 'decision' && (
-                        <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
-                            <div className="decision-block-container opacity-0 w-full max-w-prose pointer-events-auto">
-                                <DecisionBlockView block={decisionBlock} onNavigate={onNavigate} />
-                            </div>
-                        </div>
-                    )}
-
-                    {/* navigation block layer */}
-                    {navigationBlock && (
-                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-                            <NavigationBlockView
-                                block={navigationBlock as NavigationBlock}
-                                onNavigate={onNavigate}
-                            />
-                        </div>
-                    )}
+                    
 
                 </div>
 
