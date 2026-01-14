@@ -148,54 +148,57 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                 if (layout === 'sequential') {
                     const steps = gsap.utils.toArray<HTMLElement>(sectionEl.querySelectorAll('.dialogue-step'));
                     if (steps.length > 0) {
-                        gsap.set(steps, { opacity: 0, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' });
+                        gsap.set(steps, { autoAlpha: 0, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' });
 
                         const masterTl = gsap.timeline({
                             scrollTrigger: {
                                 trigger: sectionEl,
                                 start: "top top",
                                 end: `bottom bottom`,
-                                scrub: 1,
+                                scrub: true,
                             }
                         });
 
                         steps.forEach((step, index) => {
+                            const stepTl = gsap.timeline();
+
                             const internalScroller = step.querySelector('.internal-scroll-text');
                             const analysisBlock = step.querySelector('.analysis-block-wrapper');
 
-                            masterTl.to(step, { opacity: 1, duration: 0.5 }, `step_start_${index}`);
+                            stepTl.to(step, { autoAlpha: 1, duration: 1 });
+
+                            stepTl.to(step, { autoAlpha: 1, duration: 1 });
 
                             if (internalScroller) {
                                 const textHeight = internalScroller.scrollHeight;
                                 const container = internalScroller.parentElement;
                                 const containerHeight = container ? container.clientHeight : 0;
                                 if (textHeight > containerHeight) {
-                                    masterTl.to(internalScroller, {
+                                    stepTl.to(internalScroller, {
                                         y: -(textHeight - containerHeight),
-                                        duration: 2,
+                                        duration: 5,
                                         ease: "none",
-                                        end: `bottom bottom`,
-                                    }, `step_start_${index} +=0.5`);
-                                    masterTl.to({}, { duration: 1 }); 
+                                        //end: `bottom bottom`,
+                                    });
                                 } else {
-                                    masterTl.to({}, {duration: 2});
+                                    stepTl.to({}, {duration: 2});
                                 }
                             } else if (analysisBlock) {
-                                masterTl.to({}, {
-                                    duration: 2,
-                                    onUpdate: function() {
-                                        setAnalysisProgress(this.progress());
-                                    },
-                                    onComplete: () => setAnalysisProgress(0),
-                                    onReverseComplete: () => setAnalysisProgress(0),
-                                }, `step_start_${index} +=0.5`);
+                                const analysisProgress = { value: 0 };
+                                stepTl.to(analysisProgress, {
+                                    value: 1,
+                                    duration: 5,
+                                    onUpdate: () => setAnalysisProgress(analysisProgress.value),
+                                });
                             } else {
-                                masterTl.to({}, {duration: 2});
+                                stepTl.to({}, {duration: 2});
                             }
 
-                            if (index < steps.length - 1) {
-                                masterTl.to(step, { opacity: 0, duration: 0.5 }, `step_start_${index + 1}`);
-                            }
+                            stepTl.to({}, { duration: 5 });
+
+                            stepTl.to(step, { autoAlpha: 0, duration: 1 });
+
+                            masterTl.add(stepTl);
                         });
                     }
                 }
@@ -212,24 +215,58 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                 });
 
                 {/* Animation for narrative texts */}
-                const narrativeContainer = sectionEl.querySelector("#narrative-scroll-container");
-                const narrativeTexts = sectionEl.querySelector("#narrative-texts");
+                if (layout !== 'sequential' && layout !== 'dialogue') {
+                    const narrativeContainer = sectionEl.querySelector("#narrative-scroll-container");
+                    const narrativeTexts = sectionEl.querySelector("#narrative-texts");
 
-                if (narrativeContainer && narrativeTexts) {
-                    const containerHeight = narrativeContainer.clientHeight;
-                    const textHeight = narrativeTexts.clientHeight;
+                    if (narrativeContainer && narrativeTexts) {
+                        const containerHeight = narrativeContainer.clientHeight;
+                        const textHeight = narrativeTexts.clientHeight;
 
-                    if (textHeight > containerHeight) {
-                        gsap.to(narrativeTexts, {
-                            y: -(textHeight - containerHeight),
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: sectionEl,
-                                start: "top top",
-                                end: "bottom bottom",
-                                scrub: true,
-                            }
-                        });
+                        if (textHeight > containerHeight) {
+                            gsap.to(narrativeTexts, {
+                                y: -(textHeight - containerHeight),
+                                ease: "none",
+                                scrollTrigger: {
+                                    trigger: sectionEl,
+                                    start: "top top",
+                                    end: "center center",
+                                    scrub: true,
+                                }
+                            });
+                        }
+                    }
+                }
+
+                if (layout === 'sequential' || layout === 'dialogue') {
+                    const narrativeContainer = sectionEl.querySelector("#narrative-scroll-container");
+                    const narrativeTexts = sectionEl.querySelector("#narrative-texts");
+
+                    if (narrativeContainer && narrativeTexts) {
+                        const containerHeight = narrativeContainer.clientHeight;
+                        const textHeight = narrativeTexts.clientHeight;
+
+                        if (textHeight > containerHeight) {
+                            const steps = gsap.utils.toArray<HTMLElement>(sectionEl.querySelectorAll('.dialogue-step'));
+                            const narrativeStepIndex = steps.findIndex(step =>
+                                step.querySelector('.internal-scroll-text') !== null
+                            );
+                            const numSteps = steps.length;
+                            const stepSize = 100 / numSteps;
+                            let startPercent = narrativeStepIndex * stepSize;
+                            if (startPercent == 0) startPercent = 5; 
+
+                            gsap.to(narrativeTexts, {
+                                y: -(textHeight - containerHeight),
+                                ease: "none",
+                                scrollTrigger: {
+                                    trigger: sectionEl,
+                                    start: `${startPercent}% top`,
+                                    end: `+=${textHeight - containerHeight}`,
+                                    scrub: true,
+                                }
+                            });
+                        }
                     }
                 }
 
@@ -357,6 +394,13 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                         />
                     )}
 
+                    {/* UI Title Banner */}
+                    {showTitleBanner && (
+                        <div className="title-banner z-10">
+                            <h3>{title}</h3>
+                        </div>
+                    )}
+
                     <div className="dialogue-container absolute inset-0">
                         {content.map((block, blockIndex) => {
                             switch (block.type) {
@@ -422,12 +466,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                     </div>
                 </div>
 
-                {/* UI Title Banner */}
-                {showTitleBanner && (
-                    <div className="title-banner z-10">
-                        <h3>{title}</h3>
-                    </div>
-                )}
+                
             </section>
         );
     }
@@ -535,7 +574,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
 
                 {/* UI Title Banner */}
                 {showTitleBanner && (
-                    <div className="title-banner z-10 sticky">
+                    <div className="title-banner z-10">
                         <h3>{title}</h3>
                     </div>
                 )}

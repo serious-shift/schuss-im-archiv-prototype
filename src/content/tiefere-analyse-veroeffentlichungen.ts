@@ -72,6 +72,11 @@ export const tiefereAnalyseVeroeffentlichungenChapter: Chapter = {
                     "Ein Motiv, das greifbarer wird.",
                     "Ein Täterbild, das sich zu fügen scheint.",
                 ]
+            },
+            {
+                type: 'navigation',
+                buttonText: "Weiter",
+                targetChapterId: "finale-entscheidung"
             }
         ]
     },

@@ -299,7 +299,8 @@ export const verhoerLenaBergmannChapter: Chapter = {
     {
         id: "scene-2-b-decision",
         title: "Glauben schenken oder nicht?",
-        showTitleBanner: true,
+        image: "/images/scene-2/2B-Entscheidung-aus-dem-verhoerraum.png",
+        layout: "sequential",
         content: [
           {
             type: 'narrative',

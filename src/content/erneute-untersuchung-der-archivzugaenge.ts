@@ -153,7 +153,7 @@ export const erneuteUntersuchungDerArchivzugaengeChapter: Chapter = {
                 {
                     type: "navigation",
                     buttonText: "Alibi untersuchen",
-                    targetChapterId: "-"
+                    targetChapterId: "untersuchung-des-alibis"
                 }
             ]
         }

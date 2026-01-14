@@ -7,7 +7,7 @@ export const archivzugangEntscheidungChapter: Chapter = {
         {
             id: "scene-3-a-decision",
             title: "Archivzugang Entscheidung",
-            layout: "sequential",
+            layout: "dialogue",
             content: [
                 {
                     type: "narrative",

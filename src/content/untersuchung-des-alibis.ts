@@ -23,7 +23,7 @@ export const untersuchungDesAlibisChapter: Chapter = {
                 },
                 {
                     text: "→ Kann Lenas Alibi ab 15:00 Uhr bestätigt werden",
-                    targetChapterId: "-"
+                    targetChapterId: "zeugenbefragung"
                 }
             ]
         }

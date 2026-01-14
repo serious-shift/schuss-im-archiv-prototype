@@ -7,6 +7,19 @@ export const zettelPruefenChapter: Chapter = {
     {
       id: "scene-2-b-a",
       title: "Forensische Untersuchung: Zettel",
+      image: "/images/scene-2/2BA-forensische-untersuchung-1.png",
+      layout: "default",
+      showTitleBanner: true,
+      content: [
+        {
+          type: "nullBlock",
+        }
+      ]
+    },
+    {
+      id: "scene-2-b-a-2",
+      title: "Forensische Untersuchung: Zettel",
+      image: "/images/scene-2/2BA-forensische-untersuchung-2.png",
       layout: "default",
       content: [
         {

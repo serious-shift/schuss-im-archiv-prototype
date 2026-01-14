@@ -8,7 +8,7 @@ export const einfuehrungChapter: Chapter = {
             id: "scene-0",
             title: "Rolle als Ermittler:in",
             showTitleBanner: true,
-            video: "/videos/scene-0-transition-clean.mp4",
+            video: "/videos/Szene-0-Transition-clean.mp4",
             content: [
                 {
                     type: 'narrative',
