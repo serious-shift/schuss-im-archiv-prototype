@@ -82,7 +82,7 @@ export const zeugenbefragungChapter: Chapter = {
     {
         id: "scene-6-a-a-2",
         title: "Fitnessstudio Kamera 1",
-        video: "/videos/scene-0-1-police_car_pov-clean.mp4",
+        video: "/videos/6AA-Fitnessstudiokameras-Video-1-Eingang-clean.mp4",
         content: [
             {
                 type: 'nullBlock'

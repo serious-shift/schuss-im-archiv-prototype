@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
+import { useVisitedChapters } from '@/src/lib/useVisitedChapters'; 
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -18,6 +19,13 @@ type ChapterClientProps = {
 export default function ChapterClient({ chapterData }: ChapterClientProps) {
     // State for the currently visible scenes
     const [visibleScenes, setVisibleScenes] = useState<Scene[]>([]);
+    const { addChapter } = useVisitedChapters();
+
+    useEffect(() => {
+        if (chapterData?.id) {
+            addChapter(chapterData.id);
+        }
+    }, [chapterData?.id, addChapter]);
 
     /*useIsomorphicLayoutEffect(() => {
         const lenis = new Lenis({

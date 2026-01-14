@@ -32,6 +32,7 @@ import { festnahmeChapter } from "./festnahme";
 import { finalePetraHaasChapter } from "./finale-petra-haas";
 import { finaleLenaBergmannChapter } from "./finale-lena-bergmann";
 import { finaleRalfKoenigChapter } from "./finale-ralf-koenig";
+import { USBStickAnalyseRouterChapter } from "./usb-stick-analyse-router";
 
 export const chapters: Chapter[] = [
   einfuehrungChapter,
@@ -66,5 +67,6 @@ export const chapters: Chapter[] = [
   festnahmeChapter,
   finalePetraHaasChapter,
   finaleLenaBergmannChapter,
-  finaleRalfKoenigChapter
+  finaleRalfKoenigChapter,
+  USBStickAnalyseRouterChapter,
 ];

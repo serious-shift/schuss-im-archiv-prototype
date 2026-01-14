@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useIsomorphicLayoutEffect } from "@/src/lib/useIsomorphicLayoutEffect";
-import { SceneContent, DialogueBlock, DecisionBlock, NavigationBlock, InfoBlock, InvestigationBlock, NarrativeBlock, AnalysisBlock } from "@/src/types";
+import { SceneContent, DialogueBlock, DecisionBlock, NavigationBlock, InfoBlock, InvestigationBlock, NarrativeBlock, AnalysisBlock, CustomBlock } from "@/src/types";
 import InvestigationView from "./game/InvestigationView";
 import NarrativeBlockView from "./game/NarrativeBlockView";
 import DialogueBlockView from "./game/DialogueBlockView";
@@ -279,8 +279,8 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
     //const otherContent = content.filter(block => block.type !== 'investigation' && block.type !== 'info' && block.type !== 'dialogue');
 
     const textBlocks = content.filter(
-        (block): block is NarrativeBlock | AnalysisBlock =>
-            block.type === 'narrative' || block.type === 'analysis'
+        (block): block is NarrativeBlock | AnalysisBlock | CustomBlock =>
+            block.type === 'narrative' || block.type === 'analysis' || block.type === 'custom'
     );
 
     const interactiveBlocks = content.filter(
@@ -410,6 +410,10 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                             />
                                         </div>
                                     );
+
+                                case 'custom':
+                                    const Component = block.component;
+                                    return <Component key={blockIndex} {...block.props} />;
                                     
                                 default:
                                     return null;
@@ -482,6 +486,9 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                             return <NarrativeBlockView key={index} block={block} />;
                                         case 'analysis':
                                             return <AnalysisBlockView key={index} block={block} />;
+                                        case 'custom':
+                                            const Component = block.component;
+                                            return <Component key={index} {...block.props} />;
                                         default:
                                             return null;
                                     }

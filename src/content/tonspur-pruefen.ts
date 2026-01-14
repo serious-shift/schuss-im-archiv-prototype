@@ -32,6 +32,6 @@ export const tonspurPruefenChapter: Chapter = {
           targetChapterId: "tonspur-ergebnisse"
         }
       ]
-    }
+    },
   ]
 }

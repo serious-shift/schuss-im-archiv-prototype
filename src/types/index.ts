@@ -1,3 +1,5 @@
+import { ComponentType } from "react";
+
 export type Scene = {
     id: string;
     title: string;
@@ -14,7 +16,7 @@ export type Chapter = {
     scenes: Scene[];
 }
 
-export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock | InvestigationBlock | DecisionBlock | InfoBlock | AnalysisBlock;
+export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock | InvestigationBlock | DecisionBlock | InfoBlock | AnalysisBlock | CustomBlock;
 
 export type InvestigationBlock = {
     type: 'investigation';
@@ -98,3 +100,9 @@ export type AnalysisBlock = {
         subItems?: string[];
     }[];
 }
+
+export type CustomBlock = {
+    type: 'custom';
+    component: ComponentType<any>;
+    props?: { [key: string]: any };
+};

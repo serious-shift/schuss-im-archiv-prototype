@@ -24,7 +24,7 @@ export const USBStickAnalyseChapter: Chapter = {
         {
           type: "navigation",
           buttonText: "Weiter",
-          targetChapterId: "usb-stick-analyse-a"
+          targetChapterId: "usb-stick-analyse-router"
         }
       ]
     }
