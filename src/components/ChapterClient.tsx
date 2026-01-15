@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Chapter, Scene, SceneContent } from "@/src/types";
 import { useIsomorphicLayoutEffect } from "@/src/lib/useIsomorphicLayoutEffect";
 import SceneSection from "@/src/components/SceneSection";
@@ -9,6 +9,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import { useVisitedChapters } from '@/src/lib/useVisitedChapters'; 
+import { useAssetLoader } from "../lib/useAssetLoader";
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -20,6 +21,21 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
     // State for the currently visible scenes
     const [visibleScenes, setVisibleScenes] = useState<Scene[]>([]);
     const { addChapter } = useVisitedChapters();
+    const mainRef = useRef<HTMLElement>(null);
+
+    const { allImages, allVideos } = useMemo(() => {
+        const images = chapterData.scenes
+            .map(s => s.image)
+            .filter((url): url is string => !!url);
+            
+        const videos = chapterData.scenes
+            .map(s => s.video)
+            .filter((url): url is string => !!url);
+
+        return { allImages: images, allVideos: videos };
+    }, [chapterData]);
+
+    const { loaded, progress } = useAssetLoader(allImages, allVideos);
 
     useEffect(() => {
         if (chapterData?.id) {
@@ -27,33 +43,20 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
         }
     }, [chapterData?.id, addChapter]);
 
-    /*useIsomorphicLayoutEffect(() => {
-        const lenis = new Lenis({
-            wrapper: document.querySelector("#smooth-wrapper") as HTMLElement,
-            content: document.querySelector("#smooth-content") as HTMLElement,
-        });
-
-        lenis.on('scroll', ScrollTrigger.update);
-
-        const tickerCallback = (time: number) => {
-            lenis.raf(time * 1000);
-        };
-        gsap.ticker.add(tickerCallback);
-
-        gsap.ticker.lagSmoothing(0);
-
-        // Cleanup-Funktion
-        return () => {
-            lenis.destroy();
-            gsap.ticker.remove(tickerCallback);
-        };
-    }, []);*/
-
     useEffect(() => {
         if (chapterData && chapterData.scenes.length > 0) {
             setVisibleScenes([chapterData.scenes[0]]);
         }
     }, [chapterData]);
+
+    useEffect(() => {
+        if (loaded) {
+            const timer = setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [loaded]);
 
     const handleDecision = useCallback((sceneId: string, followUpContent: SceneContent[]) => {
         setVisibleScenes(prevScenes =>
@@ -92,10 +95,6 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
                     })();
                     return prevScenes;
                 }
-                // Prevent adding duplicates
-                //if (prevScenes.find(s => s.id === targetSceneId)) {
-                //    return prevScenes;
-                //}
                 return [...prevScenes, targetScene];
             });
         }
@@ -130,8 +129,30 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
         }
     }, [visibleScenes]);
 
+    if (!loaded) {
+        return (
+            <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-white h-screen w-screen">
+                <h2 className="text-2xl mb-4 font-light tracking-widest">LOADING CHAPTER</h2>
+                
+                {/* Ladebalken Container */}
+                <div className="w-64 h-1 bg-gray-800 overflow-hidden">
+                    {/* Ladebalken Füllung */}
+                    <div 
+                        className="h-full bg-white transition-all duration-300 ease-out"
+                        style={{ width: `${progress}%` }}
+                    />
+                </div>
+                <p className="mt-2 text-xs text-gray-500">{progress}%</p>
+            </div>
+        );
+    }
+
     return (
-        <main>
+        <main
+            ref={mainRef}
+            className="opacity-0"
+            style={{ opacity: 1, transition: 'opacity 1s ease-in-out' }}
+        >
             {visibleScenes.map((scene) => (
                 <SceneSection
                     key={scene.id}
