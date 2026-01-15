@@ -22,11 +22,6 @@ export const tiefereAnalyseVeroeffentlichungenChapter: Chapter = {
                     "Zusätzlicher Hinweis:",
                     "König hatte bereits einen Vorvertrag mit einer bekannten Plattform zur Veröffentlichung eines Enthüllungsstücks – geplantes Release: 3 Tage nach dem Mord."
                 ]
-            },
-            {
-                type: 'navigation',
-                buttonText: "Weiter",
-                targetSceneId: "scene-6-c-b-b-info"
             }
         ]
     },
@@ -34,24 +29,17 @@ export const tiefereAnalyseVeroeffentlichungenChapter: Chapter = {
         id: "scene-6-c-b-b-info",
         title: "Ein Zeuge meldet sich",
         showTitleBanner: true,
+        image: "/images/scene-6/6CBB-info.png",
         content: [
-            //{
-            //    type: 'audio',
-            //    src: '/audios/PLACEHERE',
-            //    caption: "Ein Zeuge meldet sich mit einer wichtigen Information, die den Fall in einem neuen Licht erscheinen lässt."
-            //},
             {
                 type: 'narrative',
                 text: [
+                    "Ein Zeuge meldet sich!",
+                    "„Hier ist jemand, der gestern am Archiv war … Ich habe diesen Ralf König gesehen. So gegen 18:10 Uhr. Ich war mit dem Hund unterwegs. Da war er ganz sicher – hat sich umgeschaut, als ob er rein will. Ich kenne den vom Fernsehen.“",
                     "Ein neuer Hinweis – und er passt ins Bild.",
                     "König hatte angegeben, erst nach dem Schuss am Archiv angekommen zu sein.",
                     "Doch nun behauptet ein Zeuge, ihn bereits gegen 18:10 Uhr dort gesehen zu haben.",
                 ]
-            },
-            {
-                type: 'navigation',
-                buttonText: "Weiter",
-                targetSceneId: "scene-7-c-b-b-könig"
             }
         ]
     },

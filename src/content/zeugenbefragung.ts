@@ -50,16 +50,30 @@ export const zeugenbefragungChapter: Chapter = {
             },
             {
                 character: "Sarah Weber",
-                text: "Ja, wir haben direkt davor geschrieben. Ich kann Ihnen den Chat zeigen. Außerdem müsste das Fitnessstudio doch Kameras haben, die uns vor, während und nach dem Training zeigen sollten.",
+                text: "Ja, wir haben direkt davor geschrieben. Ich kann Ihnen den Chat zeigen um 15:01 Uhr. Außerdem müsste das Fitnessstudio doch Kameras haben, die uns vor, während und nach dem Training zeigen sollten.",
                 align: "right"
             },
-            // Chatverlauf
-            {
-                character: "Ermittler:in",
-                text: "Danke. Wir werden zusätzlich die Überwachungskameras des Studios anfordern.",
-                align: "left"
-            },
-          ]
+        ],
+        },
+        {
+            type: "chat",
+            phoneImage: "/images/investigationAssets/Handy-front_prop.png",
+            messages: [
+                { id: "1", sender: "Lena", text: "Bin gerade los, Bus kommt in 2 Minuten.", time: "15:01 Uhr" },
+                { id: "2", sender: "Sarah", text: "Ich bin schon da, steh vorm Eingang.", time: "15:02 Uhr" },
+                { id: "3", sender: "Lena", text: "Top, bis gleich 😄", time: "15:03 Uhr" },
+            ]
+        },
+        {
+            type: "dialogue",
+            lines: [
+        
+                {
+                    character: "Ermittler:in",
+                    text: "Danke. Wir werden zusätzlich die Überwachungskameras des Studios anfordern.",
+                    align: "left"
+                },
+            ]
         },
         {
             type: "narrative",

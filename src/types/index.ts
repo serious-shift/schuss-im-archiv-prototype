@@ -16,7 +16,37 @@ export type Chapter = {
     scenes: Scene[];
 }
 
-export type SceneContent = NarrativeBlock | DialogueBlock | NavigationBlock | nullBlock | InvestigationBlock | DecisionBlock | InfoBlock | AnalysisBlock | CustomBlock;
+export type SceneContent = 
+    | NarrativeBlock 
+    | DialogueBlock 
+    | NavigationBlock 
+    | nullBlock 
+    | InvestigationBlock 
+    | DecisionBlock 
+    | InfoBlock 
+    | AnalysisBlock 
+    | CustomBlock
+    | AudioBlock
+    | ChatBlock;
+
+export type ChatBlock = {
+    type: "chat";
+    phoneImage: string;
+    messages: ChatMessage[];
+}
+
+export type ChatMessage = {
+    id: string;
+    sender: 'Lena' | 'Sarah';
+    text: string;
+}
+
+export type AudioBlock = {
+    type: 'audio';
+    audioSrc: string;
+    coverImage: string;
+    title?: string;
+}
 
 export type InvestigationBlock = {
     type: 'investigation';
@@ -30,8 +60,9 @@ export type Hotspot = {
     id: string;
     title: string;
     description: string;
-    image: string;
+    image?: string;
     required: boolean;
+    audio? : AudioBlock;
     position: {
         x: number;
         y: number;

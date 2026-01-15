@@ -10,6 +10,8 @@ import NavigationBlockView from "./game/NavigationBlockView";
 import DecisionBlockView from "./game/DecisionBlockView";
 import InfoBlockView from "./game/InfoBlockView";
 import AnalysisBlockView from "./game/AnalysisBlockView";
+import { AudioBlockView } from "./game/AudioBlockView";
+import { ChatBlockView } from './game/ChatBlockView';
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -454,6 +456,24 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                                             />
                                         </div>
                                     );
+
+                                case 'audio':
+                                    return (
+                                        <div key={blockIndex} className="dialogue-step absolute inset-0 flex items-center justify-end p-8 md:p-12">
+                                            <div className="w-full max-w-prose pointer-events-auto">
+                                                <AudioBlockView block={block} />
+                                            </div>
+                                        </div>
+                                    )
+
+                                case 'chat':
+                                    return (
+                                        <div key={blockIndex} className="dialogue-step absolute inset-0 flex items-center justify-center p-8 md:p-12 pointer-events-auto">
+                                            <div className="w-full h-full flex items-center justify-center">
+                                                <ChatBlockView block={block} />
+                                            </div>
+                                        </div>
+                                    )
 
                                 case 'custom':
                                     const Component = block.component;

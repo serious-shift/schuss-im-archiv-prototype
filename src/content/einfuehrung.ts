@@ -45,9 +45,9 @@ export const einfuehrungChapter: Chapter = {
                     hotspots: [
                         {
                             id: 'hint-1',
-                            title: 'Schusswaffe und Patrone',
+                            title: 'Schusswaffe',
                             description: 'Ein kalter Boden. Neben Dr. Heller finden Sie nur eine einzelne Patronenhülse – Kaliber 9mm. Die Waffe selbst wurde mitgenommen. Es war ein sauberer Schuss aus nächster Nähe.',
-                            image: '/images/investigationAssets/Pistole.png',
+                            image: '/images/investigationAssets/pistole.png',
                             required: false,
                             position: { x: 40, y: 84 },
                             rotation: -40,
@@ -81,7 +81,7 @@ export const einfuehrungChapter: Chapter = {
                             id: 'hint-4',
                             title: 'Papier Spur',
                             description: ' Hellers Schreibtisch ist aufgeräumt. Nur eine Spendenliste sticht heraus - neben ihr ein zerknüllter Zettel. Er trägt die klare Handschrift einer anderen Person.',
-                            image: '/images/Papierspur-detail_prop.png',  
+                            image: '/images/investigationAssets/Papierspur-detail_prop.png',  
                             required: false,
                             position: { x: 68, y: 52.5 },
                             rotateX: -70,
@@ -93,6 +93,11 @@ export const einfuehrungChapter: Chapter = {
                             title: 'Wiederhergestellte Audioaufnahme',
                             description: ' Die Spurensicherung konnte eine gelöschte Audio-Datei von Hellers Handy wiederherstellen. Sie hören ein lautes, emotionales Streitgespräch mit dem Journalisten Ralf König. ',
                             image: '/images/investigationAssets/Handy-front_prop.png',
+                            audio: {
+                                type: 'audio',
+                                audioSrc: '/audios/msg_koenig_final.mp3',
+                                coverImage: '/images/investigationAssets/Handy-front_prop.png',
+                            },
                             required: false,
                             position: { x: 84, y: 74 },
                             rotation: -90,

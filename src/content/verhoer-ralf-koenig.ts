@@ -41,19 +41,14 @@ export const verhoerRalfKoenigChapter: Chapter = {
                     },
                 ]
             },
-            //{
-            //    type: 'audio',
-            //    src: '/audios/audio-koenig.mp3',
-            //    caption: 'Audioaufnahme von Ralf König auf Dr. Hellers Handy'
-            //},
+            {
+                type: 'audio',
+                audioSrc: '/audios/msg_koenig_final.mp3',
+                coverImage: '/images/investigationAssets/Handy-front_prop.png',
+            },
             {
                 type: 'dialogue',
                 lines: [
-                    {
-                        character: "Ermittler:in",
-                        text: "Du weißt genau, dass es so nicht weitergehen kann. Irgendwann muss Schluss sein, verstehst du? Und wenn du das nicht einsehen willst… dann musst du eben die Konsequenzen tragen.",
-                        align: 'left',
-                    },
                     {
                         character: "Ralf König",
                         text: "Was… zur Hölle? Das… das habe ich nie gesagt. Das ist nicht meine Nachricht. Also, nicht so.",

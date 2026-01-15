@@ -7,16 +7,13 @@ export const videoPruefenChapter: Chapter = {
     {
       id: "scene-7-a-a-b",
       title: "Video forensisch prüfen",
-      layout: "sequential",
+      layout: "default",
       image: "/images/scene-7/7AAB-video-forensisch-pruefen.png",
       content: [
         {
           type: "narrative",
-          text: "Das Videomaterial wird an die forensische IT-Abteilung übergeben. Nach eingehender Prüfung erhalten Sie einen technischen Analysebericht – und ein Ergebnis, das Zweifel nährt."
-        },
-        {
-          type: "narrative",
           text: [
+            "Das Videomaterial wird an die forensische IT-Abteilung übergeben. Nach eingehender Prüfung erhalten Sie einen technischen Analysebericht – und ein Ergebnis, das Zweifel nährt.",
             "Forensisches Gutachten – Videoanalyse (Fitnessstudio, 19.11.2025) Geprüfte Dateien: 3 Überwachungsvideos (Eintritt, Innenbereich, Ausgang)",
             "Ergebnisse:",
             "- Metadatenabweichung: Timestamps der Dateien weichen geringfügig vom internen Kamerasystem ab",
@@ -24,12 +21,7 @@ export const videoPruefenChapter: Chapter = {
             "Frame-Glitches & Layering-Spuren: Hinweise auf nachträgliche Bildveränderungen",
             "Gesichtssignaturprüfung: Frame-by-frame Analyse zeigt Inkonsistenzen in der Beleuchtung auf Sarahs Gesicht – typisch für Deepfake-Komposition",
             "Schlussfolgerung:",
-            "Die vorliegenden Videoaufnahmen sind höchstwahrscheinlich manipuliert. Es besteht der Verdacht auf eine Deepfake-Erstellung, um eine zweite Person im Video zu entfernen oder nie einzuarbeiten."
-          ]
-        },
-        {
-          type: "narrative",
-          text: [
+            "Die vorliegenden Videoaufnahmen sind höchstwahrscheinlich manipuliert. Es besteht der Verdacht auf eine Deepfake-Erstellung, um eine zweite Person im Video zu entfernen oder nie einzuarbeiten.",
             "Ein beunruhigender Befund:",
             "Die Videos wurden offenbar manipuliert – gezielt, professionell, mit dem Ziel, den Eindruck zu erwecken, Lena Bergmann sei niemals im Fitnessstudio gewesen.",
             "Wer hatte das technische Know-how – und das Motiv – ein Alibi zu fälschen?",

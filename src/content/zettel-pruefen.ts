@@ -114,6 +114,7 @@ export const zettelPruefenChapter: Chapter = {
       id: "scene-2-b-a-conclusion",
       title: "Hellers Unterlagen durchsuchen",
       layout: "default",
+      image: "/images/scene-2/2B-Entscheidung-aus-dem-verhoerraum.png",
       content: [
         {
           type: "narrative",
