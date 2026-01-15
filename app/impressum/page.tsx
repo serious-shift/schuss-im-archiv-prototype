@@ -24,12 +24,18 @@ export default function ImpressumPage() {
                     [Am Gonsenheimer Spieß] [19]<br />
                     [55122] [Mainz]
                 </p>
+                <p>
+                    [Simeon] [Lenz]<br />
+                    [Anni-Eisler-Lehmann-Str.] [8a]<br />
+                    [55122] [Mainz]
+                </p>
             </div>
 
             <div className="space-y-2">
                 <h2 className="text-xl font-semibold text-white">Kontakt</h2>
                 <p>
                     E-Mail: [marius.schmidt@students.hs-mainz.de]<br />
+                    E-Mail: [simeon.lenz@students.hs-mainz.de]<br />
                 </p>
             </div>
 
@@ -38,6 +44,11 @@ export default function ImpressumPage() {
                 <p>
                     [Marius] [Schmidt]<br />
                     [Am Gonsenheimer Spieß] [19]<br />
+                    [55122] [Mainz]
+                </p>
+                <p>
+                    [Simeon] [Lenz]<br />
+                    [Anni-Eisler-Lehmann-Str.] [8a]<br />
                     [55122] [Mainz]
                 </p>
             </div>
