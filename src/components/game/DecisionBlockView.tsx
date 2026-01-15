@@ -32,7 +32,7 @@ export default function DecisionBlockView({ block, onNavigate, onDecision }: Dec
         : undefined;
 
     const combinedStyle = {
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', 
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', 
         ...(block.backgroundImage && { 
             backgroundImage: `url(${block.backgroundImage})`, 
             backgroundSize: 'cover', 
@@ -78,12 +78,12 @@ export default function DecisionBlockView({ block, onNavigate, onDecision }: Dec
     }
 
     const containerClasses = isQuestionStyle
-        ? "text-left p-4 space-y-3"
-        : "text-center p-4 space-y-6";
+        ? "text-left p-6 space-y-3 rounded-lg"
+        : "text-center p-6 space-y-6 rounded-lg";
 
     return (
         <div className={containerClasses} style={combinedStyle}>
-            <p className="text-xl italic text-gray-300">
+            <p className="text-xl text-white font-bold">
                 {block.question}
             </p>
             <div className={isQuestionStyle ? "flex flex-col items-start gap-2" : "flex flex-col justify-center gap-4"}>

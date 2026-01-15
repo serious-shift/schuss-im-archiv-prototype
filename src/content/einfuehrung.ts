@@ -45,16 +45,16 @@ export const einfuehrungChapter: Chapter = {
                     hotspots: [
                         {
                             id: 'hint-1',
-                            title: 'Schusswaffe',
+                            title: 'Patronenhülse',
                             description: 'Ein kalter Boden. Neben Dr. Heller finden Sie nur eine einzelne Patronenhülse – Kaliber 9mm. Die Waffe selbst wurde mitgenommen. Es war ein sauberer Schuss aus nächster Nähe.',
-                            image: '/images/investigationAssets/pistole.png',
+                            image: '/images/investigationAssets/huelse.png',
                             required: false,
                             position: { x: 40, y: 84 },
-                            rotation: -40,
-                            rotateX: -56,
-                            rotateY: -10,
-                            perspective: 0,
-                            scale: 1.5,
+                            //rotation: -40,
+                            //rotateX: -56,
+                            //rotateY: -10,
+                            //perspective: 0,
+                            scale: 0.6,
                         },
                         {
                             id: 'hint-2',

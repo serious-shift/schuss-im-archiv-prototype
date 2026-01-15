@@ -574,7 +574,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                             </div>
                         ) : (
                             <div className="max-w-prose mx-auto">
-                                <div className="anim-container w-full space-y-4 text-white pointer-events-auto">
+                                <div className="anim-container w-full space-y-4 text-white pointer-events-auto flex flex-col items-center">
                                     {interactiveBlocks.map((block, index) => {
                                         if (!block) return null;
                                         switch (block.type) {
