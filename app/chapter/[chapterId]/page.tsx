@@ -24,3 +24,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     // get chapter client component
     return <ChapterClient chapterData={chapterData} />;
 }
+
+export async function generateStaticParams() {
+  return chapters.map((chapter) => ({
+    chapterId: chapter.id, 
+  }));
+}
