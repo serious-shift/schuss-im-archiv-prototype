@@ -49,10 +49,12 @@ export const tonspurErgebnisseChapter: Chapter = {
                     choices: [
                         {
                             text: "→ Vielleicht hat die Person beim Aufspielen der Deepfake-Datei Spuren hinterlassen.",
+                            title: "Fingerabdruckanalyse an der Tastatur der Admin-Station beauftragen",
                             targetChapterId: "spurensicherung-admin-station"
                         },
                         {
                             text: "→ Was hat sie an dem Tattag am Admin Rechner gemacht?",
+                            title: "Lena Bergmann zur letzten Sitzung befragen",
                             targetChapterId: "befragung-lena-bergmann"
                         }
                     ]

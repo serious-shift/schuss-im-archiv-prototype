@@ -318,10 +318,12 @@ export const verhoerLenaBergmannChapter: Chapter = {
                 choices: [
                     {
                         text: "➜ Sie schauen sich die Archivzugänge an. Wurde Lena wirklich um 15:00 Uhr ausgebucht? Oder war sie doch länger vor Ort, als sie behauptet?",
+                        title: "Archiv-Zugangsprotokolle überprüfen",
                         targetChapterId: "lenas-anliegen"
                     },
                     {
                         text: "➜ Sie geben den Zettel an die Spurensicherung weiter: Tinte, Fingerabdrücke, Papierherkunft – alles wird geprüft. Vielleicht lässt sich belegen, wer ihn tatsächlich geschrieben – und vielleicht sogar noch angefasst – hat.",
+                        title: "Zettel forensisch untersuchen lassen",
                         targetChapterId: "zettel-pruefen"
                     }
                 ]

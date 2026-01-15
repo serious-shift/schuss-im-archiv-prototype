@@ -129,7 +129,7 @@ export const zettelPruefenChapter: Chapter = {
         },
         {
             type: "navigation",
-            buttonText: "Weiter",
+            buttonText: "Ralf König befragen",
             targetChapterId: "verhoer-ralf-koenig"
         }
       ]

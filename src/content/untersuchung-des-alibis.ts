@@ -20,10 +20,12 @@ export const untersuchungDesAlibisChapter: Chapter = {
             choices: [
                 {
                     text: "→ Sind noch andere Hinweis auf dem Zettel zu finden",
+                    title: "Zettel forensisch untersuchen",
                     targetChapterId: "zettel-pruefen"
                 },
                 {
                     text: "→ Kann Lenas Alibi ab 15:00 Uhr bestätigt werden",
+                    title: "Zeugin / Lenas Freundin Befragen",
                     targetChapterId: "zeugenbefragung"
                 }
             ]

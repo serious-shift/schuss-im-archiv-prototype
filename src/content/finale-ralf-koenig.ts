@@ -8,6 +8,7 @@ export const finaleRalfKoenigChapter: Chapter = {
       id: "szene-xxx-ralf",
       title: "Festnahme: Ralf Koenig",
       layout: "dialogue",
+      image: "/images/scene-xxx/ralf/XXX-verhoerszene-ralf-koenig-1.png",
       content: [
         {
           type: "dialogue",
@@ -142,24 +143,48 @@ export const finaleRalfKoenigChapter: Chapter = {
                 text: "Nein. Ich sage Ihnen, dass Sie gerade einer Konstruktion folgen. Einer plausiblen. Genau deshalb ist sie gefährlich.",
                 align: "right"
             },
-            {
-                character: "Ermittler:in",
-                text: "Sie sind festgenommen wegen Mordverdachts an Dr. Martin Heller.",
-                align: "left"
-            },
-            {
-                character: "Ralf Koenig",
-                text: "Dann hoffen Sie, dass Ihre Geschichte stärker ist als die echte.",
-                align: "right"
-            },
           ]
-        },
-        {
-            type: "navigation",
-            buttonText: "Fall abschließen",
-            targetChapterId: "-"
         }
       ]
-    }
+    },
+    {
+        id: "szene-xxx-ralf-festnahme",
+        title: "Festnahme: Ralf Koenig",
+        layout: "dialogue",
+        image: "/images/scene-xxx/ralf/XXX-verhoerszene-ralf-koenig-2.png",
+        content: [
+            {
+                type: "dialogue",
+                lines: [
+                    {
+                    character: "Ermittler:in",
+                    text: "Sie sind festgenommen wegen Mordverdachts an Dr. Martin Heller.",
+                    align: "left"
+                },
+                {
+                    character: "Ralf Koenig",
+                    text: "Dann hoffen Sie, dass Ihre Geschichte stärker ist als die echte.",
+                    align: "right"
+                },
+                ]
+            }
+        ]
+    },
+    {
+        id: "szene-xxx-ralf-abfuhr",
+        title: "Festnahme: Ralf Koenig",
+        layout: "default",
+        image: "/images/scene-xxx/ralf/XXX-verhoerszene-ralf-koenig-4.png",
+        content: [
+            {
+                type: "nullBlock",
+            },
+            {
+                type: "navigation",
+                buttonText: "Fall abschließen",
+                targetChapterId: "-"
+            }
+        ]
+    },
   ]
 }

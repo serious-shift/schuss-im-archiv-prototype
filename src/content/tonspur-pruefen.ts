@@ -26,7 +26,7 @@ export const tonspurPruefenChapter: Chapter = {
         },
         {
           type: "navigation",
-          buttonText: "Weiter",
+          buttonText: "Herkunft prüfen",
           targetChapterId: "tonspur-ergebnisse"
         }
       ]

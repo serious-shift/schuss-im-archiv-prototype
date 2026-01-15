@@ -19,17 +19,17 @@ export const entscheidungChapter: Chapter = {
           backgroundImage: '/images/scene-1/1-Blick-auf-Tisch-mit-Beweismitteln.png',
           choices: [
               {
-                  text: "Dr. Petra Haas (DNA des Haars am Ärmel)",
+                  text: "DNA des Haars (Dr. Petra Haas)",
                   targetChapterId: "verhoer-petra-haas",
                   image: '/images/investigationAssets/Haar_prop.png' 
               },
               {
-                  text: "Lena Bergmann (Schriftuntersuchung des Zettels auf Schreibtisch)",
+                  text: "Schriftuntersuchung des Zettels auf Schreibtisch (Lena Bergmann)",
                   targetChapterId: "verhoer-lena-bergmann",
                   image: '/images/investigationAssets/Papierspur-detail_prop.png'
               },
               {
-                  text: "Ralf König (Audiospur auf Hellers Handy)",
+                  text: "Audiospur auf Hellers Handy (Ralf König)",
                   targetChapterId: "verhoer-ralf-koenig",
                   image: '/images/investigationAssets/Handy-front_prop.png',
 

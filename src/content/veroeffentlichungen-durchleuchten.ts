@@ -138,10 +138,12 @@ export const veroeffentlichungenDurchleuchtenChapter: Chapter = {
                 choices: [
                     {
                         text: "→ Tonspur forensisch prüfen lassen. Die Aufnahme auf Dr. Hellers Handy wird an eine spezialisierte Abteilung zur technischen Analyse übergeben.",
+                        title: "König glauben schenken",
                         targetSceneId: "tonspur-pruefen"
                     },
                     {
                         text: "→ Königs Veröffentlichungen durchleuchten. Sie werfen einen genauen Blick auf Königs journalistische Arbeit: Artikel, Recherchen, mögliche Verbindungen zum Fall.",
+                        title: "Vertiefte Analyse seiner Veröffentlichungen",
                         targetChapterId: "tiefere-analyse-veroeffentlichungen"
                     }
                 ]

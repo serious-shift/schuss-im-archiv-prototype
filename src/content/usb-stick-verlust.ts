@@ -28,7 +28,7 @@ export const usbStickVerlustChapter: Chapter = {
         },
         {
             type: "navigation",
-            buttonText: "Weiter",
+            buttonText: "Büro untersuchen",
             targetChapterId: "untersuchung-buero-haas"
         }
       ]

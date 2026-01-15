@@ -8,6 +8,7 @@ export const finaleLenaBergmannChapter: Chapter = {
       id: "szene-xxx-lena",
       title: "Festnahme: Lena Bergmann",
       layout: "dialogue",
+      image: "/images/scene-xxx/lena/XXX-verhoerszene-Lena-2.png",
       content: [
         {
           type: "dialogue",
@@ -142,24 +143,48 @@ export const finaleLenaBergmannChapter: Chapter = {
                 text: "Ich schiebe gar nichts. Ich sage nur: Ihre Beweise erzählen eine Geschichte. Und jemand hat sie geschrieben.",
                 align: "right"
             },
-            {
-                character: "Ermittler:in",
-                text: "Sie sind festgenommen wegen Mordverdachts an Dr. Martin Heller.",
-                align: "left"
-            },
-            {
-                character: "Lena Bergmann",
-                text: "Dann nehmen Sie mich fest. Aber Sie verhaften gerade die Falsche.",
-                align: "right"
-            },
           ]
-        },
-        {
-            type: "navigation",
-            buttonText: "Fall abschließen",
-            targetChapterId: "-"
         }
       ]
-    }
+    },
+    {
+        id: "szene-xxx-lena-festnahme",
+        title: "Festnahme: Lena Bergmann",
+        layout: "dialogue",
+        image: "/images/scene-xxx/lena/XXX-verhoerszene-Lena-3.png",
+        content: [
+            {
+                type: "dialogue",
+                lines: [
+                    {
+                        character: "Ermittler:in",
+                        text: "Sie sind festgenommen wegen Mordverdachts an Dr. Martin Heller.",
+                        align: "left"
+                    },
+                    {
+                        character: "Lena Bergmann",
+                        text: "Dann nehmen Sie mich fest. Aber Sie verhaften gerade die Falsche.",
+                        align: "right"
+                    },
+                ]
+            }
+        ]
+    },
+    {
+        id: "szene-xxx-lena-abfuhr",
+        title: "Festnahme: Lena Bergmann",
+        layout: "default",
+        image: "/images/scene-xxx/lena/XXX-verhoerszene-Lena-5.png",
+        content: [
+            {
+                type: "nullBlock",
+            },
+            {
+                type: "navigation",
+                buttonText: "Fall abschließen",
+                targetChapterId: "-"
+            }
+        ]
+    },
   ]
 }

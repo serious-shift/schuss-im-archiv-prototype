@@ -106,6 +106,7 @@ export type DialogueLine = {
 
 export type Choice = {
     text: string;
+    title?: string;
     targetSceneId?: string;
     targetChapterId?: string;
     image?: string;

@@ -73,8 +73,8 @@ export const verheorLenaBergmannChapter: Chapter = {
         },
         {
           type: "navigation",
-          buttonText: "Weiter",
-          targetChapterId: "-"
+          buttonText: "Alibi untersuchen",
+          targetChapterId: "untersuchung-des-alibis"
         }
       ]
     }

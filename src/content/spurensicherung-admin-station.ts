@@ -84,10 +84,12 @@ export const spurensicherungAdminStationChapter: Chapter = {
                 choices: [
                     {
                         text: "→ Was sind ihre Aufgaben an dem Admin-PC & wann hat Sie ihn zuletzt genutzt?",
+                        title: "Haas befragen",
                         targetChapterId: "befragung-petra-haas"
                     },
                     {
                         text: "→ Warum wurde die manipulierte Nachricht über ihr Konto auf Hellers Handy übertragen?",
+                        title: "Lena Bergmann befragen",
                         targetChapterId: "befragung-lena-bergmann"
                     }
                 ]

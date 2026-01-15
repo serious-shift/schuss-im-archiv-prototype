@@ -91,8 +91,11 @@ export default function DecisionBlockView({ block, onNavigate, onDecision }: Dec
                     <button
                         key={index}
                         onClick={() => handleChoiceClick(choice)}
-                        className="bg-gray-800 hover:bg-red-700 border border-gray-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 flex-1 text-left"
+                        className="group bg-gray-800 hover:bg-red-700 border border-gray-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 flex-1 text-left"
                     >
+                        {choice.title && (
+                            <h4 className="text-lg text-red-500 font-bold mb-1 transition-colors group-hover:text-white">{choice.title}</h4>
+                        )}
                         {choice.text}
                     </button>
                 ))}

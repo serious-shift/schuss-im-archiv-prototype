@@ -160,10 +160,12 @@ export const verhoerRalfKoenigChapter: Chapter = {
                 choices: [
                     {
                         text: "→ Tonspur forensisch prüfen lassen. Die Aufnahme auf Dr. Hellers Handy wird an eine spezialisierte Abteilung zur technischen Analyse übergeben.",
+                        title: "König glauben schenken",
                         targetChapterId: "tonspur-pruefen"
                     },
                     {
                         text: "→ Königs Veröffentlichungen durchleuchten. Sie werfen einen genauen Blick auf Königs journalistische Arbeit: Artikel, Recherchen, mögliche Verbindungen zum Fall.",
+                        title: "König Misstrauen",
                         targetChapterId: "veroeffentlichungen-durchleuchten"
                     }
                 ]
