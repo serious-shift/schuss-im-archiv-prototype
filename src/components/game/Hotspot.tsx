@@ -41,7 +41,7 @@ export default function Hotspot({ hotspot, onClick }: HotspotProps) {
                 alt={hotspot.title}
                 width={80}
                 height={80}
-                className="object-contain drop-shadow-lg transition-transform duration-300"
+                className="object-contain drop-shadow-lg transition-transform duration-300 h-auto w-auto"
                 style={{
                     transform: isHovered ? hoverTransformation : transformation,
                     transformStyle: 'preserve-3d',

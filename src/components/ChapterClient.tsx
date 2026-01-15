@@ -85,7 +85,7 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
     }, [chapterData, handleNavigate]);
 
     // scroll to newly added scene
-    useEffect(() => {
+    /*useEffect(() => {
         if (visibleScenes.length > 1) {
             const lastSceneId = visibleScenes[visibleScenes.length - 1].id;
             const targetElement = document.getElementById(lastSceneId);
@@ -101,7 +101,7 @@ export default function ChapterClient({ chapterData }: ChapterClientProps) {
                 })
             }
         }
-    }, [visibleScenes]);
+    }, [visibleScenes]);*/
 
     return (
         <main

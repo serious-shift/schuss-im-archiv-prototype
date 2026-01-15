@@ -31,6 +31,5 @@ export function ConditionalNavigation({
     }
   }, [visitedChapters, checkChapterId, targetChapterId_ifTrue, targetChapterId_ifFalse, router]);
 
-  // Render nothing or a loading indicator
   return null;
 }

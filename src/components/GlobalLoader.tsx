@@ -3,7 +3,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useAssetLoader } from "@/src/lib/useAssetLoader";
 import { chapters } from "@/src/content/chapters"; 
-import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function GlobalLoader({ children }: { children: React.ReactNode }) {
@@ -38,8 +37,6 @@ export default function GlobalLoader({ children }: { children: React.ReactNode }
     }
   }, [loaded]);
 
-  // -- RENDER LOGIC --
-
   return (
     <>
       {/* loading screen */}
@@ -57,7 +54,6 @@ export default function GlobalLoader({ children }: { children: React.ReactNode }
         <p className="mt-2 text-xs font-mono">{progress}%</p>
       </div>
 
-      {/* B) ENTIRE PROJECT (Children) */}
       <div style={{ opacity: showContent ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
         {showContent && children}
       </div>

@@ -8,8 +8,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export default function SmoothScroller() {
     useEffect(() => {
         const lenis = new Lenis({
-            //wrapper: document.querySelector("#smooth-wrapper") as HTMLElement,
-            //content: document.querySelector("#smooth-content") as HTMLElement,
             wrapper: document.body,
         });
 

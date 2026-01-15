@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import { AnalysisBlock } from '@/src/types';
 import { useIsomorphicLayoutEffect } from '@/src/lib/useIsomorphicLayoutEffect';
 import gsap from 'gsap';
-import { time } from 'console';
 
 type AnalysisBlockViewProps = {
     block: AnalysisBlock;

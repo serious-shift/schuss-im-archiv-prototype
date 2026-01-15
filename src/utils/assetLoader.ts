@@ -1,7 +1,7 @@
 const withTimeout = <T>(promise: Promise<T>, ms: number, src: string): Promise<T> => {
     return new Promise((resolve) => {
         const timer = setTimeout(() => {
-            console.warn(`⚠️ TIMEOUT: Datei hat zu lange gebraucht, wird übersprungen: ${src}`);
+            console.warn(`TIMEOUT: Datei hat zu lange gebraucht, wird übersprungen: ${src}`);
             resolve(src as unknown as T); 
         }, ms);
 

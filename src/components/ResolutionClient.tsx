@@ -1,7 +1,8 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { useVisitedChapters } from "@/src/lib/useVisitedChapters";
 
 const EVIDENCE_DATA = [
     {
@@ -48,13 +49,45 @@ const EVIDENCE_DATA = [
     },
 ];
 
+const CREDITS_DATA = [
+    {
+        role: "Konzept & Story",
+        names: ["Lotta Klinke", "Leonie Mäder"]
+    },
+    {
+        role: "Entwicklung & Umsetzung",
+        names: ["Marius Schmidt"]
+    },
+    {
+        role: "Design & Assets",
+        names: ["Simeon Lenz"]
+    },
+    {
+        role: "Projekt entstand im Rahmen von",
+        names: ["dim5 Interactive Storytelling"]
+    },
+    {
+        role: "Besonderer Dank an die Dozenten",
+        names: ["Alexander Rossner", "Jens Friederich"]
+    }
+];
+
 export default function ResolutionClient() {
     const searchParams = useSearchParams();
+    const router = useRouter();
     const result = searchParams.get("result"); 
     const isSuccess = result === "success";
 
+    const { visitedChapters, clearChapters } = useVisitedChapters();
+
+    const handleNewGame = () => {
+        clearChapters();
+        router.push("/");
+    };
+
     // State für Ansichtswechsel
     const [showAnalysis, setShowAnalysis] = useState(true);
+    const [showCredits, setShowCredits] = useState(false);
     
     // State für gefundene Szenen (aus LocalStorage)
     const [visitedScenes, setVisitedScenes] = useState<Set<string>>(new Set());
@@ -124,8 +157,8 @@ export default function ResolutionClient() {
     return (
         <main className="relative min-h-screen text-white p-6 md:p-12 flex flex-col items-center justify-center overflow-hidden">
             
-            {/* --- HINTERGRUND EBENE (NEU) --- */}
-            <div className="absolute inset-0 z-0">
+            {/* --- HINTERGRUND EBENE --- */}
+            <div className="absolute inset-0 z-0 fixed overflow-hidden">
                 <div 
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${backgroundImage})` }}
@@ -191,31 +224,16 @@ export default function ResolutionClient() {
                     )}
                 </div>
 
-                {/* 4. BUTTON */}
-                {/*<div className="flex justify-center pt-8">
-                    <button 
-                        onClick={() => setShowAnalysis(true)}
-                        className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-red-700 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 hover:bg-red-600 hover:scale-105 shadow-lg hover:shadow-red-900/50"
-                    >
-                        Beweis Analyse
-                        <svg className="w-5 h-5 ml-2 -mr-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                    </button>
-                </div>*/}
-
-                {/* --- TEIL 2: ANALYSE SCREEN (BEWEISLISTE) --- */}
+                {/* --- ANALYSE SCREEN (BEWEISLISTE) --- */}
                 {showAnalysis && (
                     <div className="space-y-12 animate-fade-in-up">
                         
-                        {/* Header Teil 2 */}
                         <div className="text-center space-y-4 pb-8 border-b border-gray-800">
                             <h2 className="text-4xl md:text-5xl font-bold text-white">Anatomie der Täuschung</h2>
                             <p className="text-xl text-gray-400">Welche Beweise hast du gefunden – und welche hast du übersehen?</p>
                         </div>
 
-                        {/* Listen Container */}
-                        <div className="space-y-16">
-                            
-                            {/* Kategorie: Deepfake */}
+                        <div className="space-y-16">   
                             <div>
                                 <h3 className="text-2xl font-bold text-blue-400 mb-6 uppercase tracking-widest border-l-4 border-blue-500 pl-4">
                                     Deepfake Spuren
@@ -230,7 +248,6 @@ export default function ResolutionClient() {
                                 </div>
                             </div>
 
-                            {/* Kategorie: Manipulation */}
                             <div>
                                 <h3 className="text-2xl font-bold text-orange-500 mb-6 uppercase tracking-widest border-l-4 border-orange-500 pl-4">
                                     Manipulation & Spuren
@@ -247,9 +264,58 @@ export default function ResolutionClient() {
 
                         </div>
 
-                        {/* Footer Ende */}
-                        <div className="text-center pt-12">
-                             <p className="text-gray-500 italic">Ende der Simulation.</p>
+                        <div className="text-center pt-16 pb-8 border-t border-gray-800 mt-12">
+                             <p className="text-gray-400 mb-6 italic">Fall abgeschlossen.</p>
+                             
+                             <button 
+                                onClick={() => setShowCredits(true)}
+                                className="px-8 py-3 border border-gray-600 rounded-full text-gray-300 hover:text-white hover:border-white hover:bg-white/10 transition-all uppercase tracking-widest text-sm"
+                             >
+                                Credits ansehen
+                             </button>
+                        </div>
+                    </div>
+                )}
+
+                {/* --- CREDITS SCENE --- */}
+                {showCredits && (
+                    <div className="z-50 w-full flex flex-col items-center justify-center p-6">
+                        <div className="w-full text-center space-y-12 py-12 scrollbar-hide">
+                            
+                            <h2 className="text-4xl md:text-6xl font-bold text-white mb-12">
+                                THE END
+                            </h2>
+
+                            <div className="space-y-16">
+                                {CREDITS_DATA.map((section, idx) => (
+                                    <div key={idx} className="space-y-4">
+                                        <h3 className="text-red-500 text-sm uppercase font-bold">
+                                            {section.role}
+                                        </h3>
+                                        <div className="flex flex-col gap-2">
+                                            {section.names.map((name, nIdx) => (
+                                                <span key={nIdx} className="text-xl md:text-2xl text-gray-200 font-light">
+                                                    {name}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="pt-20 pb-12">
+                                <p className="text-gray-500 text-sm mb-8">
+                                    Vielen Dank fürs Spielen.
+                                </p>
+                                
+                                <button 
+                                    onClick={handleNewGame}
+                                    className="inline-block bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-lg transition-transform duration-300 hover:scale-105"
+                                >
+                                    Neuen Fall starten
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 )}

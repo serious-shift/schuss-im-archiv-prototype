@@ -53,7 +53,7 @@ export function AudioBlockView({ block }: { block: AudioBlock }) {
                     style={{ backgroundImage: `url(${block.coverImage})` }}
                 />
                 
-                {/* Play Button (Zentriert) */}
+                {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all transform group-hover:scale-110 border border-white/50">
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}

@@ -40,11 +40,8 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
     {/* Define all content blocks */}
     const infoBlock = content.find(block => block?.type === 'info') as InfoBlock | undefined;
     const investigationBlock = content.find(block => block?.type === 'investigation') as InvestigationBlock | undefined;
-    const dialogueBlock = content.find(block => block?.type === 'dialogue') as DialogueBlock | undefined;
     const decisionBlock = content.find(block => block?.type === 'decision') as DecisionBlock | undefined;
     const navigationBlock = content.find(block => block?.type === 'navigation') as NavigationBlock | undefined;
-    const narrativeBlocks = content.filter(block => block?.type === 'narrative') as NarrativeBlock[];
-
 
     {/* Check for interactive blocks */}
     const isInteractive = !!(investigationBlock || decisionBlock || navigationBlock);
@@ -204,17 +201,6 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                         });
                     }
                 }
-
-                {/* Animation for text elements */}
-                const elementsToAnimate = gsap.utils.toArray(sectionEl.querySelectorAll('.anim-child'));
-                gsap.from(elementsToAnimate, {
-                    opacity: 0, y: 30, stagger: 0.2,
-                    scrollTrigger: {
-                        trigger: sectionEl,
-                        start: "top 60%",
-                        toggleActions: "play none none none",
-                    }
-                });
 
                 {/* Animation for narrative texts */}
                 if (layout !== 'sequential' && layout !== 'dialogue') {
