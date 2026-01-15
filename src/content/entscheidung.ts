@@ -16,22 +16,22 @@ export const entscheidungChapter: Chapter = {
         {
           type: 'decision',
           question: "Sie müssen entscheiden, welche der drei Hauptspuren Sie zuerst in der Konfrontation vertiefen.",
-          backgroundImage: '/images/investigation_tatort.png',
+          backgroundImage: '/images/scene-1/1-Blick-auf-Tisch-mit-Beweismitteln.png',
           choices: [
               {
                   text: "Dr. Petra Haas (DNA des Haars am Ärmel)",
                   targetChapterId: "verhoer-petra-haas",
-                  image: '/images/martin_heller.png' 
+                  image: '/images/investigationAssets/Haar_prop.png' 
               },
               {
                   text: "Lena Bergmann (Schriftuntersuchung des Zettels auf Schreibtisch)",
                   targetChapterId: "verhoer-lena-bergmann",
-                  image: '/images/martin_heller.png'
+                  image: '/images/investigationAssets/Papierspur-detail_prop.png'
               },
               {
                   text: "Ralf König (Audiospur auf Hellers Handy)",
                   targetChapterId: "verhoer-ralf-koenig",
-                  image: '/images/martin_heller.png',
+                  image: '/images/investigationAssets/Handy-front_prop.png',
 
               }
           ],

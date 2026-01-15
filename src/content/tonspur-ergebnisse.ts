@@ -9,7 +9,7 @@ export const tonspurErgebnisseChapter: Chapter = {
             title: "Wie kam die Datei auf das Handy?",
             layout: "sequential",
             showTitleBanner: true,
-            image: '/images/Verhoerraum.png',
+            image: "/images/scene-3/3CA-Tonspur-pruefen-lassen-mit-Text.png",
             content: [
                 {
                     type: "narrative",
@@ -36,7 +36,8 @@ export const tonspurErgebnisseChapter: Chapter = {
         {
             id: "scene-4-c-a-decision",
             title: "Entscheidung: Nächste Schritte",
-            showTitleBanner: true,
+            layout: "sequential",
+            image: "/images/scene-3/3CA-Tonspur-pruefen-lassen-ohne-Text.png",
             content: [
                 {
                     type: "narrative",

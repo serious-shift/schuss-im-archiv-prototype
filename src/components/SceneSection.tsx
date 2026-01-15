@@ -26,7 +26,7 @@ type SceneSectionProps = {
     onNavigate: (targetSceneId: string) => void;
     onSceneComplete: (sceneId: string) => void;
     onDecision: (sceneId: string, followUpContent: SceneContent[]) => void;
-    layout?: 'default' | 'split-view' | 'dialogue' | 'sequential';
+    layout?: 'default' | 'split-view' | 'dialogue' | 'sequential';
 };
 
 export default function SceneSection({ title, content, showTitleBanner, id, video, image, onNavigate, onSceneComplete, onDecision, layout = 'default',  }: SceneSectionProps) {
@@ -383,7 +383,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
             ref={sectionRef}
             id={id}
             className="relative"
-            style={{ height: `${sectionHeight}vh` }}
+            style={{ height: `${sectionHeight}vh`, minHeight: '300vh' }}
             >
                 <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
                     {/* background-layer */}
@@ -538,7 +538,7 @@ export default function SceneSection({ title, content, showTitleBanner, id, vide
                 )}
 
                 {/* interaction layer */}
-                {interactiveBlocks.length > 0 && (
+                {interactiveBlocks.length > 0 && !investigationBlock?.showInternalButton && (
                     <div className="interactive-container absolute bottom-10 left-0 right-0 p-8 md:p-12 pointer-events-none z-20">
                         {investigationBlock ? (
                             <div className="inline-flex justify-start pointer-events-auto">

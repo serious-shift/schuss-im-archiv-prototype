@@ -8,6 +8,7 @@ export const tonspurPruefenChapter: Chapter = {
       id: "szene-3-c-a",
       title: "Tonspur prüfen lassen",
       layout: "default",
+      image: "/images/scene-3/3CA-Tonspur-pruefen-lassen-mit-Text.png",
       content: [
         {
           type: "narrative",
@@ -19,12 +20,9 @@ export const tonspurPruefenChapter: Chapter = {
             "- Metadaten-Check: Die Datei wurde nicht direkt auf dem Gerät erstellt.",
             "- Erstellungszeit: 18:56 Uhr",
             "- Software: VoiceClone Studio 5.2",
-            "→ Diese Anwendung wird genutzt, um Stimmen künstlich zu erzeugen."
+            "→ Diese Anwendung wird genutzt, um Stimmen künstlich zu erzeugen.",
+            "Die Tonspur ist ein Deepfake. Jemand wollte ein Streitgespräch konstruieren – als perfektes Motiv für den Mord."
           ]
-        },
-        {
-          type: "narrative",
-          text: "Die Tonspur ist ein Deepfake. Jemand wollte ein Streitgespräch konstruieren – als perfektes Motiv für den Mord."
         },
         {
           type: "navigation",

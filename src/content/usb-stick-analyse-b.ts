@@ -7,6 +7,7 @@ export const USBStickAnalysePathBChapter: Chapter = {
     {
       id: "scene-6-a-a-a-b",
       title: "USB-Stick analysieren lassen",
+      image: "/images/scene-5/5AAA-USB-Stick-analysieren-lassen.png",
       layout: "sequential",
       content: [
         {
@@ -31,7 +32,7 @@ export const USBStickAnalysePathBChapter: Chapter = {
         {
           type: "navigation",
           buttonText: "Petra Haas konfrontieren",
-          targetChapterId: "-"
+          targetSceneId: "scene-7-a-a-a"
         }
       ]
     },
@@ -39,6 +40,7 @@ export const USBStickAnalysePathBChapter: Chapter = {
         id: "scene-7-a-a-a",
         title: "Verhör: Dr. Petra Haas",
         layout: "dialogue",
+        image: "/images/interrogations/Dr-Petra-Haas-sitzend.png",
         content: [
             {
                 type: "dialogue",
@@ -108,7 +110,7 @@ export const USBStickAnalysePathBChapter: Chapter = {
             {
                 type: "navigation",
                 buttonText: "Artikelnummer prüfen",
-                targetChapterId: "-"
+                targetChapterId: "waffenbox-pruefen"
             }
         ] 
     }

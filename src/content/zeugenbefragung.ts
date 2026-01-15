@@ -8,7 +8,7 @@ export const zeugenbefragungChapter: Chapter = {
       id: "scene-5-a-a",
       title: "Zeugenbefragung",
       layout: "dialogue",
-      image: "/images/interrogations/Lena-Bergmann-sitzend.png",
+      image: "/images/scene-5/5AA-Zeugenbefragung.png",
       content: [
         {
           type: "dialogue",
@@ -71,7 +71,7 @@ export const zeugenbefragungChapter: Chapter = {
         id: "scene-6-a-a-1",
         title: "Fitnessstudio Kameras",
         layout: "default",
-        image: "/images/interrogations/Lena-Bergmann-stehend.png",
+        image: "/images/scene-6/6AA-Fitnessstudio-Kameras-Hintergrund.png",
         content: [
             {
                 type: 'narrative',
@@ -92,7 +92,7 @@ export const zeugenbefragungChapter: Chapter = {
     {
         id: "scene-6-a-a-3",
         title: "Fitnessstudio Kamera 2",
-        video: "/videos/scene-0-1-police_car_pov-clean.mp4",
+        video: "/videos/6AA-Fitnessstudiokameras-Video-2-Laufband-clean.mp4",
         content: [
             {
                 type: 'nullBlock'
@@ -102,7 +102,7 @@ export const zeugenbefragungChapter: Chapter = {
     {
         id: "scene-6-a-a-4",
         title: "Fitnessstudio Kamera 3",
-        video: "/videos/scene-0-1-police_car_pov-clean.mp4",
+        video: "/videos/6AA-Fitnessstudiokameras-Video-3-Ausgang-clean.mp4",
         content: [
             {
                 type: 'nullBlock'
@@ -113,7 +113,7 @@ export const zeugenbefragungChapter: Chapter = {
         id: "scene-6-a-a-5",
         title: "Fitnessstudio Kameras",
         layout: "sequential",
-        image: "/images/interrogations/Lena-Bergmann-stehend.png",
+        image: "/images/scene-6/6AA-Fitnessstudio-Kameras-Hintergrund.png",
         content: [
             {
                 type: 'narrative',
@@ -137,7 +137,7 @@ export const zeugenbefragungChapter: Chapter = {
                     },
                     {
                         text: "→ Sie geben das Videomaterial an eine forensische Abteilung zur Echtheitsprüfung weiter.",
-                        targetChapterId: "-"
+                        targetChapterId: "video-pruefen"
                     }
                 ]
             }

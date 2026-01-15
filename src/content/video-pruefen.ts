@@ -8,6 +8,7 @@ export const videoPruefenChapter: Chapter = {
       id: "scene-7-a-a-b",
       title: "Video forensisch prüfen",
       layout: "sequential",
+      image: "/images/scene-7/7AAB-video-forensisch-pruefen.png",
       content: [
         {
           type: "narrative",
@@ -48,11 +49,6 @@ export const videoPruefenChapter: Chapter = {
                     "Noch am selben Tag fahren Sie persönlich zum Fitnessstudio, um mit der IT-Leitung zu sprechen.",
                     "Ziel: Herausfinden, wer auf das Kamera-System zugreifen kann – und ob es Anhaltspunkte für eine externe Manipulation gibt.",
                 ]
-            },
-            {
-                type: 'navigation',
-                buttonText: "Weiter",
-                targetSceneId: "scene-0-1"
             }
         ]
     },
@@ -61,6 +57,7 @@ export const videoPruefenChapter: Chapter = {
         title: "Befragung: IT-Techniker Braun",
         showTitleBanner: true,
         layout: "dialogue",
+        image: "/images/scene-8/8AAB-it-techniker-braun.png",
         content: [
             {
                 type: 'dialogue',

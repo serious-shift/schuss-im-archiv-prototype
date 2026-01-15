@@ -10,28 +10,23 @@ export const festnahmeChapter: Chapter = {
       layout: 'split-view',
       content: [
         {
-          type: 'info',
-          text: "Es wurden genügend Beweise gesammelt. Zeit, den Täter festzunehmen.",
-        },
-        {
           type: 'decision',
           question: "Wen möchtest du als Täter an dem Mord an Martin Heller verhaften?",
-          backgroundImage: '/images/investigation_tatort.png',
           choices: [
               {
-                  text: "Dr. Petra Haas (DNA des Haars am Ärmel)",
+                  text: "Dr. Petra Haas",
                   targetChapterId: "finale-petra-haas",
-                  image: '/images/martin_heller.png' 
+                  image: '/images/scene-xxx/XXX-festnahme-petra-haas.png' 
               },
               {
-                  text: "Lena Bergmann (Schriftuntersuchung des Zettels auf Schreibtisch)",
+                  text: "Lena Bergmann",
                   targetChapterId: "finale-lena-bergmann",
-                  image: '/images/martin_heller.png'
+                  image: '/images/scene-xxx/XXX-festnahme-lena-bergmann.png'
               },
               {
-                  text: "Ralf König (Audiospur auf Hellers Handy)",
+                  text: "Ralf König",
                   targetChapterId: "finale-ralf-koenig",
-                  image: '/images/martin_heller.png',
+                  image: '/images/scene-xxx/XXX-festnahme-ralf-könig.png',
 
               }
           ],

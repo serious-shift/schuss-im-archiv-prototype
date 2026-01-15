@@ -22,6 +22,8 @@ export type InvestigationBlock = {
     type: 'investigation';
     backgroundImage: string;
     hotspots: Hotspot[];
+    showInternalButton?: boolean;
+    navigation?: NavigationBlock;
 }
 
 export type Hotspot = {

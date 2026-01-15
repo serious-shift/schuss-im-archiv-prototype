@@ -49,7 +49,10 @@ export default function DecisionBlockView({ block, onNavigate, onDecision }: Dec
                     </h3>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 h-full flex flex-col">
+                <div
+                className="grid h-full flex flex-col"
+                style={{ gridTemplateColumns: `repeat(${block.choices.length}, minmax(0, 1fr))` }}
+                >
                     {block.choices.map((choice, index) => (
                         <button
                             key={index}

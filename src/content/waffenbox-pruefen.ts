@@ -7,14 +7,14 @@ export const waffenboxPruefenChapter: Chapter = {
     {
       id: "scene-5-a-a-b",
       title: "Artikelnummer recherchieren",
+      image: "/images/scene-5/5AAB-Artikelnummer-recherchieren-ohne-Text.png",
       layout: "sequential",
       content: [
         {
           type: "narrative",
           text: [
             "Du begutachtest erneut die leere Waffenbox aus Dr. Haas’ Büro. Auf dem Deckel klebt ein vergilbter Aufkleber:",
-            "Artikelnummer: 17-G",
-            "Seriennummer: ZR-84371-D",
+            "Seriennummer: SW-228/4.9",
             "Du gibst beide Nummern ins Recherchetool ein.",
             "Nach wenigen Sekunden erscheint ein Treffer im zentralen Waffenregister:",
           ]
@@ -44,6 +44,7 @@ export const waffenboxPruefenChapter: Chapter = {
     {
         id: "scene-6-a-a-b",
         title: "Schwarzmarkt Munition",
+        image: "/images/scene-6/6AAB-Schwarzmaerkten-Munition.png",
         layout: "default",
         content: [
             {
@@ -59,6 +60,7 @@ export const waffenboxPruefenChapter: Chapter = {
     {
         id: "scene-7-a-a-b",
         title: "Verhör: Dr. Petra Haas",
+        image: "/images/interrogations/Dr-Petra-Haas-sitzend.png",
         layout: "dialogue",
         content: [
             {
@@ -128,6 +130,7 @@ export const waffenboxPruefenChapter: Chapter = {
     {
         id: "scene-8-a-a-b",
         title: "Patronenhülse wird analysiert",
+        image: "/images/scene-8/8AAB-Patronenhuelse-wird-analysiert.png",
         layout: "default",
         content: [
             {
@@ -142,7 +145,7 @@ export const waffenboxPruefenChapter: Chapter = {
             {
                 type: "navigation",
                 buttonText: "Weiter",
-                targetChapterId: "-"
+                targetChapterId: "finale-entscheidung"
             }
         ]
     }

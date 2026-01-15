@@ -7,6 +7,7 @@ export const veroeffentlichungenDurchleuchtenChapter: Chapter = {
     {
         id: "scene-3-c-b-veröffentlichungen-durchleuchten",
         title: "Recherche zu Ralf Königs Veröffentlichungen",
+        image: "/images/scene-5/5CBB-verdeckte-geldfluesse-heller-wankt.png",
         showTitleBanner: true,
         content: [
             {
@@ -29,7 +30,7 @@ export const veroeffentlichungenDurchleuchtenChapter: Chapter = {
         id: "scene-4-c-b-dialogue",
         title: "Verhör: Ralf König (Freund & Journalist) II",
         showTitleBanner: true,
-        image: '/images/Verhoerraum.png',
+        image: '/images/interrogations/Ralf-König-sitzend-verhörraum.png',
         layout: 'dialogue',
         content: [
             {
@@ -124,6 +125,7 @@ export const veroeffentlichungenDurchleuchtenChapter: Chapter = {
     {
         id: "scene-4-c-b-decision",
         title: "Und was jetzt?",
+        image: "/images/interrogations/Ralf-Koenig-stehend-verhoerraum.png",
         showTitleBanner: true,
         content: [
             {
@@ -136,7 +138,7 @@ export const veroeffentlichungenDurchleuchtenChapter: Chapter = {
                 choices: [
                     {
                         text: "→ Tonspur forensisch prüfen lassen. Die Aufnahme auf Dr. Hellers Handy wird an eine spezialisierte Abteilung zur technischen Analyse übergeben.",
-                        targetSceneId: "..."
+                        targetSceneId: "tonspur-pruefen"
                     },
                     {
                         text: "→ Königs Veröffentlichungen durchleuchten. Sie werfen einen genauen Blick auf Königs journalistische Arbeit: Artikel, Recherchen, mögliche Verbindungen zum Fall.",

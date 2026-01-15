@@ -9,57 +9,65 @@ export const spurensicherungAdminStationChapter: Chapter = {
       title: "Spurensicherung: Admin-Station",
       layout: "default",
       showTitleBanner: true,
+      image: "/images/scene-5/5CAA-Spurensicherung–Admin-Station-zusammen.png",
       content: [
         {
           type: "narrative",
-          text: "Die Techniker:innen des LKA sind schnell vor Ort. Die Admin-Station wird isoliert, jede Fläche sorgfältig abgesichert. Besonders die Tastatur steht im Fokus – dort, wo der Gastzugriff um 16:39 Uhr begann."
+          text: "Die Techniker:innen des LKA sind schnell vor Ort. Die Admin-Station wird isoliert, jede Fläche sorgfältig abgesichert. Wir müssen nach Gegenständen suchen, die wertvolle Spuren liefern könnten."
         },
       ]
     },
     {
         id: "scene-5-c-a-a-investigation",
-        title: "Untersuchung der Admin-Station",
+        title: "Was könnte Spuren liefern?",
+        showTitleBanner: true,
         content: [
             {
                 type: "investigation",
-                backgroundImage: '/images/investigation_admin_station.png',
+                backgroundImage: '/images/scene-5/5CAA-Spurensicherung–Admin-Station-Hintergrund.png',
+                showInternalButton: true,
+                navigation: {
+                    type : 'navigation',
+                    buttonText: "Ermittlung abschließen",
+                    targetSceneId: "scene-5-c-a-a-conclusion"
+                },
                 hotspots: [
                     {
                         id: 'hint-1',
                         title: 'Bildschirm',
                         description: 'Eher unwahrscheinlich. Bildschirme werden selten direkt berührt – Fingerabdrücke sind hier selten und meist unvollständig.',
-                        image: '/images/pistole.png',
+                        image: '/images/investigationAssets/5CAA-Spurensicherung–Admin-Station-Bildschirm-n.png',
                         required: false,
-                        position: { x: 50, y: 30 },
+                        position: { x: 80, y: 50 },
+                        scale: 5,
                     },
                     {
                         id: 'hint-2',
                         title: 'Maus',
-                        description: 'Eher unwahrscheinlich. Bildschirme werden selten direkt berührt – Fingerabdrücke sind hier selten und meist unvollständig.',
-                        image: '/images/pistole.png',
+                        description: 'Möglich, aber wenig präzise. Die Maus wird zwar oft genutzt, liefert aber meist unscharfe oder überlagerte Spuren.',
+                        image: '/images/investigationAssets/5CAA-Spurensicherung–Admin-Station-Maus-n.png',
                         required: false,
-                        position: { x: 60, y: 40 },
+                        position: { x: 92, y: 80 },
+                        scale: 3.5,
                     },
                     {
                         id: 'hint-3',
                         title: 'Tastatur',
-                        description: 'Eher unwahrscheinlich. Bildschirme werden selten direkt berührt – Fingerabdrücke sind hier selten und meist unvollständig.',
-                        image: '/images/pistole.png',
-                        required: false,
-                        position: { x: 70, y: 50 },
+                        description: 'Sehr wahrscheinlich! Besonders häufig genutzte Tasten können gut erhaltene, verwertbare Fingerabdrücke liefern – vor allem bei gezielten Eingaben.',
+                        image: '/images/investigationAssets/5CAA-Spurensicherung–Admin-Station-Tastatur-n.png',
+                        required: true,
+                        position: { x: 68, y: 80 },
+                        scale: 6,
                     },
                 ]
-            },
-            {
-                type: 'navigation',
-                buttonText: "Ermittlung abschließen",
-                targetSceneId: "scene-5-c-a-a-conclusion"
             }
         ]
     },
     {
         id: "scene-5-c-a-a-conclusion",
         title: "Ergebnisse der Spurensicherung",
+        image: "/images/investigationAssets/5CAA-entscheidung.png",
+        layout: "sequential",
         content: [
             {
                 type: "narrative",
@@ -69,13 +77,7 @@ export const spurensicherungAdminStationChapter: Chapter = {
                     "Auffällig: Der Abdruck von Dr. Haas befindet sich auf der Eingabetaste – genau an der Stelle, an der der Datenimport ausgelöst wurde.",
                     "Ein vierter Abdruck bleibt unzuordenbar, taucht jedoch nur randständig auf und steht in keinem direkten Zusammenhang mit der Übertragung.",
                 ]
-            }
-        ]
-    },
-    {
-        id: "scene-5-c-a-a-decision",
-        title: "Entscheidung: Nächste Schritte",
-        content: [
+            },
             {
                 type: "decision",
                 question: "Die Spuren auf der Tastatur lassen sich nicht mehr ignorieren. Wir haben Fingerabdrücke von Haas aber auch von Bergmann gefunden. Wen möchten Sie konfrontieren?",
@@ -91,6 +93,6 @@ export const spurensicherungAdminStationChapter: Chapter = {
                 ]
             }
         ]
-    }
+    },
   ]
 }

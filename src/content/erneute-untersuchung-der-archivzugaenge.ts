@@ -8,6 +8,7 @@ export const erneuteUntersuchungDerArchivzugaengeChapter: Chapter = {
             id: "scene-4-a-b",
             title: "Archivzugänge neu prüfen",
             layout: "sequential",
+            image: "/images/scene-3/3A-Untersuchung-der-Archivzugaenge.png",
             showTitleBanner: true,
             content: [
                 {
@@ -26,30 +27,18 @@ export const erneuteUntersuchungDerArchivzugaengeChapter: Chapter = {
                     text: [
                         "Drei Tage vor der Tat wurde Lena Bergmann vorübergehend ein Zugangscode zugeteilt – ausgerechnet der, mit dem am Abend des Mordes das Archiv betreten wurde.",
                         "Begründung: „Verlust der Schlüsselkarte“",
-                        "Status: „Neue Karte wird ausgestellt“"
-                    ]
-                }
-            ]
-        },
-        {
-            id: "scene-4-a-b-conclusion",
-            title: "Schlussfolgerung",
-            layout: "default",
-            showTitleBanner: true,
-            content: [
-                {
-                    type: "narrative",
-                    text: [
+                        "Status: „Neue Karte wird ausgestellt“",
                         "Der Zugangscode 949089 wurde eindeutig Lena Bergmann zugewiesen – ausgestellt nur wenige Tage vor der Tat.",
                         "Damit ist klar: Sie hat das Archiv betreten.",
                         "Zeit für eine erneute Befragung."
                     ]
-                }
+                },
             ]
         },
         {
             id: "scene-4-a-b-interrogation",
             title: "Verhör: Lena Bergmann (Praktikantin)",
+            image: "/images/interrogations/Lena-Bergmann-sitzend.png",
             layout: "dialogue",
             showTitleBanner: true,
             content: [

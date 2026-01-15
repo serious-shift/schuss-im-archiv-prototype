@@ -7,29 +7,30 @@ export const archivzugangEntscheidungChapter: Chapter = {
         {
             id: "scene-3-a-decision",
             title: "Archivzugang Entscheidung",
-            layout: "dialogue",
+            image: "/images/scene-3/3A-Untersuchung-der-Archivzugaenge.png",
+            layout: "split-view",
             content: [
                 {
-                    type: "narrative",
-                    text: [
-                        "Die Archivprotokolle sind ausgewertet.",
-                        "Zwei Punkte bleiben offen.",
-                        "Zwei Spuren stehen zur Wahl.",
-                    ]
+                type: 'info',
+                text: "Die Archivprotokolle sind ausgewertet. Zwei Punkte bleiben offen. Zwei Spuren stehen zur Wahl.",
                 },
                 {
                     type: "decision",
                     question: "Was möchten Sie als Nächstes untersuchen?",
+                    backgroundImage: '/images/scene-3/3A-Untersuchung-der-Archivzugaenge.png',
                     choices: [
                         {
                             text: "➜ Sie schauen nochmal erneuert über die Archivzugänge um einen möglichen Hinweis auf den Nutzer des Zugangscodes 949089 zu bekommen.",
-                            targetChapterId: "erneute-untersuchung-der-archivzugaenge"
+                            targetChapterId: "erneute-untersuchung-der-archivzugaenge",
+                            image: "/images/scene-3/3A-Entscheidung-Code.png",
                         },
                         {
                             text: "➜ Sie verschaffen sich Zugang zu Dr. Haas’ Büro.",
-                            targetChapterId: "untersuchung-buero-haas"
+                            targetChapterId: "untersuchung-buero-haas",
+                            image: "/images/scene-3/3A-Entscheidung-Haas.png",
                         }
-                    ]
+                    ],
+                    displayAs: 'decision',
                 }
             ]
         }

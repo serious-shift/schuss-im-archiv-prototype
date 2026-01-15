@@ -7,7 +7,7 @@ export const tiefereAnalyseVeroeffentlichungenChapter: Chapter = {
     {
         id: "scene-5-c-b-b-analyse",
         title: "Tiefere Analyse Veröffentlichungen",
-        image: "/images/scene-5/5CBB-verdeckte-geldfluesse-heller-wankt.png",
+        image: "/images/scene-5/5CBB-tiefere-analyse-Veroeffentlichungen.png",
         showTitleBanner: true,
         content: [
             {
@@ -18,7 +18,7 @@ export const tiefereAnalyseVeroeffentlichungenChapter: Chapter = {
                     "- Mehrere Artikel enthalten Details, die nur interne Quellen kennen konnten.",
                     "- In einem Gastbeitrag spekulierte König schon vor Wochen über „verdeckte Geldflüsse zwischen Archiven und parteinahen Stiftungen“.",
                     "- In einem inzwischen gelöschten Podcast sagt er den Satz: „Wenn ich Heller zum Reden bringe, haben wir die Story des Jahrzehnts.“",
-                    "- Eine Notiz aus seiner Recherchemappe (per Screenshot eingeblendet) zeigt: „Heller wankt. Noch ein Schritt – dann kippt er.“",
+                    "- Eine Notiz aus seiner Recherchemappe zeigt: „Heller wankt. Noch ein Schritt – dann kippt er.“",
                     "Zusätzlicher Hinweis:",
                     "König hatte bereits einen Vorvertrag mit einer bekannten Plattform zur Veröffentlichung eines Enthüllungsstücks – geplantes Release: 3 Tage nach dem Mord."
                 ]
@@ -59,6 +59,7 @@ export const tiefereAnalyseVeroeffentlichungenChapter: Chapter = {
         id: "scene-7-c-b-b-könig",
         title: "Trugschluss – Alles spricht gegen König",
         showTitleBanner: true,
+        image: "/images/scene-7/7CBB-Spendenaffäre-im-Staatsdienst.png",
         content: [
             {
                 type: 'narrative',

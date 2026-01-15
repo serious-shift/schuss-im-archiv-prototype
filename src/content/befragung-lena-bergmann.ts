@@ -102,7 +102,7 @@ export const befragungLenaBergmannChapter: Chapter = {
             choices: [
                 {
                     text: "→ Stimmt es, dass Lena sagt, sie war um 15:00 Uhr weg?",
-                    targetChapterId: ""
+                    targetChapterId: "untersuchung-der-archivzugaenge"
                 },
                 {
                     text: "→ Du gibst den silberfarbenen Stick zur forensischen Analyse.",

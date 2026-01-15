@@ -9,9 +9,10 @@ import NavigationBlockView from './NavigationBlockView';
 type InvestigationViewProps = {
     block: InvestigationBlock;
     onComplete: () => void;
+    showInternalButton?: boolean;
 }
 
-export default function InvestigationView({ block, onComplete }: InvestigationViewProps) {
+export default function InvestigationView({ block, onComplete, showInternalButton = false }: InvestigationViewProps) {
     const [selectedHotspot, setSelectedHotspot] = useState<HotspotType | null>(null);
     const [foundHotspots, setFoundHotspots] = useState<Set<string>>(new Set());
     const [isCompleted, setIsCompleted] = useState(false);
@@ -67,6 +68,18 @@ export default function InvestigationView({ block, onComplete }: InvestigationVi
                     hotspot={selectedHotspot}
                     onClose={handleCloseDetail}
                 />
+            )}
+
+            {isCompleted && block.showInternalButton && block.navigation && (
+            <div style={{
+                position: 'absolute',
+                left: '50%',
+                bottom: '40px',
+                transform: 'translateX(-50%)',
+                zIndex: 1000
+            }}>
+                <NavigationBlockView block={block.navigation} onNavigate={onComplete} />
+            </div>
             )}
         </div>
     );
