@@ -14,7 +14,7 @@ Das Ziel des Projekts ist es, spielerisch Medienkompetenz zu vermitteln – insb
 
 Das Projekt entstand im Rahmen von **Digital Media B.Sc., 5. Fachsemester, Interactive Storytelling**.
 
-🔗 **Live Demo:** [HIER DEN LINK ZUR GITHUB PAGES SEITE EINFÜGEN]
+🔗 **Live Demo:** [Schuss im Archiv](https://serious-shift.github.io/schuss-im-archiv/)
 
 ---
 
