@@ -7,6 +7,7 @@ export const USBStickAnalyseChapter: Chapter = {
     {
       id: "scene-5-a-a-a",
       title: "USB-Stick analysieren lassen",
+      showTitleBanner: true,
       layout: "default",
       image: "/images/scene-5/5AAA-USB-Stick-analysieren-lassen.png",
       content: [

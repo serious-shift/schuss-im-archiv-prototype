@@ -37,7 +37,8 @@ export const einfuehrungChapter: Chapter = {
         },
         {
             id: "scene-1",
-            title: "Ankunft am Tatort",
+            title: "Suche nach Hinweisen am Tatort",
+            showTitleBanner: true,
             content: [
                 {
                     type: 'investigation',

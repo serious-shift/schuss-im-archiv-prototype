@@ -9,6 +9,7 @@ export const konfrontationLenaBergmannChapter: Chapter = {
       title: "Verhör: Lena Bergmann",
       layout: "dialogue",
       image: "/images/interrogations/Lena-Bergmann-sitzend.png",
+      showTitleBanner: true,
       content: [
         {
           type: "dialogue",

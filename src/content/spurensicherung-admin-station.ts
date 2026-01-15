@@ -66,6 +66,7 @@ export const spurensicherungAdminStationChapter: Chapter = {
     {
         id: "scene-5-c-a-a-conclusion",
         title: "Ergebnisse der Spurensicherung",
+        showTitleBanner: true,
         image: "/images/investigationAssets/5CAA-entscheidung.png",
         layout: "sequential",
         content: [

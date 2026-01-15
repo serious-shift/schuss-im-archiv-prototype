@@ -7,6 +7,7 @@ export const videoPruefenChapter: Chapter = {
     {
       id: "scene-7-a-a-b",
       title: "Video forensisch prüfen",
+      showTitleBanner: true,
       layout: "default",
       image: "/images/scene-7/7AAB-video-forensisch-pruefen.png",
       content: [
@@ -104,7 +105,8 @@ export const videoPruefenChapter: Chapter = {
     },
     {
         id: "scene-9-a-b-b",
-        title: "Verhör II: Lena Bergmann",
+        title: "Verhör II: Lena Bergmann (Praktikantin)",
+        showTitleBanner: true,
         layout: "dialogue",
         image: "/images/interrogations/Lena-Bergmann-sitzend.png",
         content: [
@@ -175,7 +177,8 @@ export const videoPruefenChapter: Chapter = {
     },
     {
         id: "scene-10-a-b-b",
-        title: "Verhör II: Dr. Petra Haas",
+        title: "Verhör II: Dr. Petra Haas (Kollegin)",
+        showTitleBanner: true,
         layout: "dialogue",
         image: "/images/interrogations/Dr-Petra-Haas-sitzend.png",
         content: [

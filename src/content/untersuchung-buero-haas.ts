@@ -7,6 +7,7 @@ export const untersuchungBueroHaasChapter: Chapter = {
         {
             id: "scene-4-a-a",
             title: "Büro von Dr. Petra Haas untersuchen",
+            showTitleBanner: true,
             image: "/images/scene-4/4AA-Buero-von-haas-durchsuchen.png",
             layout: "sequential",
             content: [

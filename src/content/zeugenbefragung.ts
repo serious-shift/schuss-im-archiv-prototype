@@ -7,6 +7,7 @@ export const zeugenbefragungChapter: Chapter = {
     {
       id: "scene-5-a-a",
       title: "Zeugenbefragung",
+      showTitleBanner: true,
       layout: "dialogue",
       image: "/images/scene-5/5AA-Zeugenbefragung.png",
       content: [

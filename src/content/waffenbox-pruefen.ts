@@ -7,6 +7,7 @@ export const waffenboxPruefenChapter: Chapter = {
     {
       id: "scene-5-a-a-b",
       title: "Artikelnummer recherchieren",
+      showTitleBanner: true,
       image: "/images/scene-5/5AAB-Artikelnummer-recherchieren-ohne-Text.png",
       layout: "sequential",
       content: [
@@ -59,7 +60,8 @@ export const waffenboxPruefenChapter: Chapter = {
     },
     {
         id: "scene-7-a-a-b",
-        title: "Verhör: Dr. Petra Haas",
+        title: "Verhör: Dr. Petra Haas (Kollegin)",
+        showTitleBanner: true,
         image: "/images/interrogations/Dr-Petra-Haas-sitzend.png",
         layout: "dialogue",
         content: [

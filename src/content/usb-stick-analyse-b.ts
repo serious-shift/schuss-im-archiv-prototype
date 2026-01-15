@@ -7,6 +7,7 @@ export const USBStickAnalysePathBChapter: Chapter = {
     {
       id: "scene-6-a-a-a-b",
       title: "USB-Stick analysieren lassen",
+      showTitleBanner: true,
       image: "/images/scene-5/5AAA-USB-Stick-analysieren-lassen.png",
       layout: "sequential",
       content: [
@@ -39,6 +40,7 @@ export const USBStickAnalysePathBChapter: Chapter = {
     {
         id: "scene-7-a-a-a",
         title: "Verhör: Dr. Petra Haas",
+        showTitleBanner: true,
         layout: "dialogue",
         image: "/images/interrogations/Dr-Petra-Haas-sitzend.png",
         content: [

@@ -126,7 +126,6 @@ export const veroeffentlichungenDurchleuchtenChapter: Chapter = {
         id: "scene-4-c-b-decision",
         title: "Und was jetzt?",
         image: "/images/interrogations/Ralf-Koenig-stehend-verhoerraum.png",
-        showTitleBanner: true,
         content: [
             {
                 type: 'info',

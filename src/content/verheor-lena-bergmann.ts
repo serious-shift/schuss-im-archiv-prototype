@@ -6,7 +6,7 @@ export const verheorLenaBergmannChapter: Chapter = {
   scenes: [
     {
       id: "scene-4-a",
-      title: "Verhör Lena Bergmann",
+      title: "Verhör: Lena Bergmann (Praktikantin)",
       layout: "dialogue",
       image: '/images/interrogations/Lena-Bergmann-sitzend.png',
       showTitleBanner: true,
