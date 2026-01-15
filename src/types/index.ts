@@ -82,6 +82,7 @@ export type NavigationBlock = {
     buttonText: string;
     targetSceneId?: string;
     targetChapterId?: string;
+    customUrl?: string;
 }
 
 export type nullBlock = {

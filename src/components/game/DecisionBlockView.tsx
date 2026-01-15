@@ -43,10 +43,10 @@ export default function DecisionBlockView({ block, onNavigate, onDecision }: Dec
     if (isImageTileStyle) {
         return (
             <div className="h-full text-center space-y-8 flex flex-col overflow-hidden" style={combinedStyle}>
-                <div className="bg-red-500 w-full flex flex-col p-4 justify-center items-center">
-                    <h3>
+                <div className="bg-black/70 w-full flex flex-col p-4 justify-center items-center">
+                    <h2 className="text-1xl md:text-2xl font-bold text-white">
                         {block.question}
-                    </h3>
+                    </h2>
                 </div>
                 
                 <div

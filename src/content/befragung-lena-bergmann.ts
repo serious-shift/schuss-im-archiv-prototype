@@ -98,7 +98,7 @@ export const befragungLenaBergmannChapter: Chapter = {
         },
         {
             type: "decision",
-            question: "Die Spuren auf der Tastatur lassen sich nicht mehr ignorieren. Wir haben Fingerabdrücke von Haas aber auch von Bergmann gefunden. Wen möchten Sie konfrontieren?",
+            question: "Lena Bergmann behauptet, das Archiv pünktlich um 15:00 Uhr verlassen zu haben. Kurz darauf wurde eine verdächtige Datei über Dr. Hellers Account versendet. Zwei Spuren stehen zur Wahl: Stimmt ihr Zeitangabe – oder gibt der USB-Stick neue Hinweise?",
             choices: [
                 {
                     text: "→ Stimmt es, dass Lena sagt, sie war um 15:00 Uhr weg?",

@@ -12,7 +12,10 @@ export default function NavigationBlockView({ block, onNavigate }: NavigationBlo
     const router = useRouter();
 
     const handleNavigationClick = () => {
-        if (block.targetChapterId) {
+        if (block.customUrl) {
+            router.push(block.customUrl);
+            return; 
+        } else if (block.targetChapterId) {
             router.push(`/chapter/${block.targetChapterId}`);
         } else if (block.targetSceneId) {
             onNavigate(block.targetSceneId);

@@ -49,7 +49,7 @@ export default function ClueDetail({ hotspot, onClose }: ClueDetailProps) {
                                     src={hotspot.image}
                                     alt={hotspot.title}
                                     fill
-                                    className="object-cover"
+                                    className="object-contain"
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                 />
                             </div>

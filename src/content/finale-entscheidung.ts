@@ -16,7 +16,7 @@ export const finaleEntscheidungChapter: Chapter = {
           choices: [
             {
                 text: "→ Nein, wir müssen nochmal genauer rechechieren",
-                targetChapterId: "entscheidung"
+                targetChapterId: "entscheidung-1"
             },
             {
                 text: "→ Ja, ich bin mir sicher!",

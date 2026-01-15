@@ -182,7 +182,7 @@ export const finaleLenaBergmannChapter: Chapter = {
             {
                 type: "navigation",
                 buttonText: "Fall abschließen",
-                targetChapterId: "-"
+                customUrl: "/resolution?result=failure"
             }
         ]
     },
