@@ -59,7 +59,7 @@ export const einfuehrungChapter: Chapter = {
                         {
                             id: 'hint-2',
                             title: 'Zeitstempel',
-                            description: 'Hellers Armbanduhr liegt mit gesprungenem Glas am Boden. Sie ist stehen geblieben.',
+                            description: 'Hellers Armbanduhr liegt mit gesprungenem Glas am Boden. Sie ist stehen geblieben um 19:21 Uhr. Vermutlich die Zeit des Schusses.',
                             image: '/images/investigationAssets/Watch.png',
                             required: false,
                             position: { x: 76, y: 82 },

@@ -3,6 +3,7 @@ import GlobalLoader from "@/src/components/GlobalLoader";
 import SmoothScroller from "@/src/components/layout/SmoothScroller";
 import { Geist, Geist_Mono } from "next/font/google";
 import GameMenu from "@/src/components/ui/GameMenu";
+import MobileWarning from "@/src/components/ui/MobileWarning";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,6 +34,7 @@ export default function RootLayout({
         <GlobalLoader>
           <SmoothScroller />
           <GameMenu />
+          <MobileWarning />
           {children}
         </GlobalLoader>
       </body>
