@@ -8,7 +8,7 @@ export default function Home() {
       <div className="absolute inset-0 z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[20s] hover:scale-105"
-          style={{ backgroundImage: "url('/images/Szene-0_polizeistation-akte-heller.png')" }}
+          style={{ backgroundImage: "url('/schuss-im-archiv/images/Szene-0_polizeistation-akte-heller.png')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/90" />
       </div>
@@ -19,7 +19,7 @@ export default function Home() {
             
             <div className="relative w-full h-40 md:h-64 drop-shadow-2xl">
               <Image 
-                src="/images/schuss-im-archiv-logo-f.png" 
+                src="/schuss-im-archiv/images/schuss-im-archiv-logo-f.png" 
                 alt="Schuss im Archiv Logo"
                 fill
                 className="object-contain"
